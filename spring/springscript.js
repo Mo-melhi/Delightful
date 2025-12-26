@@ -195,7 +195,7 @@ if (statsContainer) {
 
 // Smooth pause/resume for the infinite slider (no jump)
 (() => {
-  const slider = document.querySelector('.card-slider');
+  const slider = document.querySelector('.card-slider-window');
   const track  = document.querySelector('.card-container');
   if (!slider || !track) return;
 
