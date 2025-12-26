@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Erasmus+ Course Catalog | Blended Online Mobility Programs
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =========================
+       COLOR VARIABLES
+    ========================= */
+        
+         :root {
+            --white: #FFFFFF;
+            --orange: #FE8E01;
+            --purple: #672583;
+            --dark-blue: #054373;
+            --light-gray: #CBC6CB;
+            --gray-bg: #F5F5F5;
+            --gray-border: #EAEAEA;
+        }
+        /* =========================
+       RESET & BASE STYLES
+    ========================= */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-blue);
+            background-color: var(--white);
+            padding-top: 80px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* =========================
+       NAVBAR
+    ========================= */
+        
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            background: var(--white);
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            height: 80px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+        }
+        
+        .logo-university {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .navbar nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .navbar a {
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: var(--orange);
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        
+        .navbar a:hover {
+            color: var(--purple);
+        }
+        /* =========================
+       DROPDOWN
+    ========================= */
+        
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background: var(--white);
+            padding: 10px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            white-space: nowrap;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.25s ease 0.3s, visibility 0s linear 0.3s;
+            min-width: 200px;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transition: opacity 0.25s ease, visibility 0s linear 0s;
+        }
+        
+        .dropdown-menu a {
+            font-size: 0.85rem;
+            color: var(--dark-blue);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 20px;
+            position: relative;
+        }
+        
+        .dropdown-menu a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: var(--orange);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            transition: 0.3s;
+        }
+        
+        .dropdown-menu a:hover::after {
+            width: 100%;
+        }
+        /* =========================
+       SOCIAL ICONS
+    ========================= */
+        
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .social-icon {
+            color: var(--dark-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: var(--orange);
+            transform: scale(1.1);
+        }
+        
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        /* =========================
+       MAIN CONTENT AREA
+    ========================= */
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background-color: var(--white);
+            flex: 1;
+            /* This makes the main content grow to fill space */
+        }
+        /* =========================
+       FACULTY NAVIGATION
+    ========================= */
+        
+        .faculty-nav {
+            background: var(--white);
+            padding: 0 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+        
+        .faculty-nav-list {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .faculty-nav-item {
+            padding: 20px 25px;
+            cursor: pointer;
+            text-align: center;
+            flex: 1;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+            color: var(--dark-blue);
+        }
+        
+        .faculty-nav-item:hover {
+            background: var(--gray-bg);
+        }
+        
+        .faculty-nav-item.active {
+            border-bottom: 3px solid var(--orange);
+            background: var(--gray-bg);
+            color: var(--dark-blue);
+        }
+        
+        .faculty-nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+            color: var(--dark-blue);
+        }
+        /* =========================
+       FACULTY HEADER
+    ========================= */
+        
+        .faculty-header {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid var(--gray-border);
+        }
+        
+        .faculty-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+            background: var(--purple);
+        }
+        
+        .faculty-header h2 {
+            color: var(--dark-blue);
+            font-size: 2.2rem;
+            font-weight: 800;
+            flex-grow: 1;
+        }
+        
+        .faculty-count {
+            background: var(--light-gray);
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        /* =========================
+       COURSES GRID
+    ========================= */
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        /* =========================
+       COURSE CARD
+    ========================= */
+        
+        .course-card {
+            background: var(--white);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid var(--gray-border);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--orange);
+            color: var(--dark-blue);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 2;
+        }
+        
+        .course-header {
+            padding: 30px;
+            border-bottom: 1px solid var(--gray-border);
+            position: relative;
+            background-color: var(--purple);
+        }
+        
+        .course-faculty {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            color: var(--white);
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+        
+        .course-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-description {
+            color: var(--dark-blue);
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            flex-grow: 1;
+        }
+        
+        .course-footer {
+            padding: 0 30px 30px;
+            margin-top: auto;
+        }
+        /* =========================
+       BUTTONS
+    ========================= */
+        
+        .course-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: var(--orange);
+            color: var(--dark-blue);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(254, 142, 1, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--purple);
+            border: 2px solid var(--purple);
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(103, 37, 131, 0.05);
+            transform: translateY(-3px);
+        }
+        /* =========================
+       FACULTY SECTIONS
+    ========================= */
+        
+        .faculty-section {
+            margin-bottom: 60px;
+            display: none;
+        }
+        
+        .faculty-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* =========================
+       FOOTER STYLES - ADDED/UPDATED
+    ========================= */
+        
+        .footer {
+            background: var(--purple);
+            color: var(--white);
+            padding: 60px 0 30px;
+            margin-top: auto;
+            /* This pushes footer to bottom */
+            width: 100%;
+        }
+        
+        .footer .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color: transparent;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            color: var(--white);
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: var(--orange);
+        }
+        
+        .footer-section i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .footer-bottom p {
+            margin-bottom: 10px;
+        }
+        
+        .footer-bottom p:last-child {
+            margin-bottom: 0;
+        }
+        /* =========================
+       MODAL
+    ========================= */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: var(--white);
+            width: 95%;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 16px;
+            position: relative;
+            animation: modalFadeIn 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 30px;
+            border-bottom: 1px solid var(--gray-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--purple);
+            color: var(--white);
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .modal-header h2 {
+            color: var(--white);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        /* =========================
+       RESPONSIVE DESIGN
+    ========================= */
+        
+        @media (max-width: 992px) {
+            .navbar {
+                padding: 0 20px;
+            }
+            .navbar nav ul {
+                gap: 1rem;
+            }
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            .faculty-nav-list {
+                flex-direction: column;
+            }
+            .faculty-nav-item {
+                padding: 15px;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            .faculty-nav-icon {
+                margin-bottom: 0;
+                font-size: 1.3rem;
+            }
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar nav ul {
+                display: none;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .faculty-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .faculty-count {
+                align-self: center;
+            }
+            .course-actions {
+                flex-direction: column;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            .footer-section a {
+                justify-content: center;
+            }
+            .modal-content {
+                width: 100%;
+                margin: 20px auto;
+                border-radius: 0;
+            }
+            .modal-body {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../imgs/istanbul-aydin-university.png" alt="Istanbul Aydin University" class="logo-university">
+                </a>
+            </div>
+        </div>
+
+        <nav>
+            <ul>
+                    <!-- WINTER -->
+                    <li class="dropdown">
+                        <a href="../winter/winter.html">WINTER</a>
+                        <div class="dropdown-menu">
+                            <a href="../winter/winter.html">Details of the program</a>
+                            <a href="../Courses/c_winter.html">Courses</a>
+                            <a href="../Accomodations/winter_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-w/WinterAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-w/Fees.html">Fees</a>
+                            <a href="../Application/Winter/Winterapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SPRING -->
+                    <li class="dropdown">
+                        <a href="../spring/spring.html">SPRING</a>
+                        <div class="dropdown-menu">
+                            <a href="../spring/spring.html">Details of the program</a>
+                            <a href="../Courses/c_spring.html">Courses</a>
+                            <a href="../Accomodations/spring_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-sp/SpringAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-sp/Fees-sp.html">Fees</a>
+                            <a href="../Application/Spring/Springapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SUMMER -->
+                    <li class="dropdown">
+                        <a href="../summer/summer.html">SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../summer/summer.html">Details of the program</a>
+                            <a href="../Courses/c_summer.html">Courses</a>
+                            <a href="../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- LATE SUMMER -->
+                    <li class="dropdown">
+                        <a href="../summer/summer.html">LATE SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../summer/summer.html">Details of the program</a>
+                            <a href="../Courses/c_summer.html">Courses</a>
+                            <a href="../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                <!-- No dropdown items -->
+                <li><a href="#PRACTICAL">PRACTICAL INFORMATION</a></li>
+                <li><a href="#CONTACT">CONTACT US</a></li>
+            </ul>
+        </nav>
+
+        <div class="social-icons">
+            <a href="#" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                    </svg>
+            </a>
+            <a href="#" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Faculty of Economics and Administrative Sciences -->
+        <section id="faculty-economics" class="faculty-section active">
+            <div class="faculty-header">
+                <div class="faculty-icon faculty-economics">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Faculty of Economics and Administrative Sciences</h2>
+                <span class="faculty-count">1 Course</span>
+            </div>
+
+            <div class="courses-grid" id="economics-courses">
+                <!-- Digital Marketing Course -->
+                <div class="course-card" data-ects="5" data-seats="30">
+                    <div class="course-badge">5 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Marketing & Digital
+                                Media</span>
+                        <h3 class="course-title">Digital Marketing</h3>
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            Due to the digital revolution, companies are shifting from traditional marketing to digital channels such as search engines, social media, and mobile platforms. This course introduces digital marketing strategies, focusing on how technology and data are
+                            used to improve customer experience, strengthen engagement, and drive business success.
+                        </p>
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('digital-marketing')">
+                                    <i class="fas fa-info-circle"></i> Full
+                                    Details
+                                </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('digital-marketing')">
+                                    <i class="fas fa-user-plus"></i> Enroll Now
+                                </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Erasmus+ Blended Online Mobility</h3>
+                    <p>Providing high-quality international education through flexible blended learning programs that combine online and mobility components.</p>
+                    <p>ECTS credits recognized across European higher education institutions.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> erasmus.programs@university.edu
+                    </p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                    <p><i class="fas fa-map-marker-alt"></i> International Office, University Campus</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#" onclick="viewProgramFees()">Program Fees</a>
+                    <a href="#">Application Process</a>
+                    <a href="#">ECTS Information</a>
+                    <a href="#">Academic Calendar 2025</a>
+                    <a href="#">Visa & Accommodation</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Our Programs</h3>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                    <a href="#"><i class="fab fa-instagram"></i>
+                            Instagram</a>
+                    <a href="#"><i class="fab fa-youtube"></i> YouTube
+                            Channel</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Delightful Istanbul | Erasmus+ Blended Online Mobility Programs</p>
+                <p>All course details are subject to change. The university reserves the right to cancel courses with insufficient enrollment.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Details Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalCourseTitle">Course Details</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalCourseBody">
+                <!-- Course details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course Data
+        const courses = {
+            'digital-marketing': {
+                title: "Digital Marketing",
+                faculty: "Faculty of Economics and Administrative Sciences",
+                department: "Business Administration",
+                ects: 3,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: " Assoc. Prof. Dr. Burçin Kaplan",
+                email: "burcinkaplan@aydin.edu.tr",
+                avatar: "imgs/Bur.jpeg",
+                code: "BUS318",
+                maxParticipants: 50,
+                prerequisites: "Basic Marketing Knowledge",
+                description: "Master digital marketing strategies including SEO, social media marketing, content strategy, and data analytics. Hands-on experience with digital marketing tools and platforms in the modern business environment.",
+                learningOutcomes: [
+                    "Be familiar with the concepts, theories, and issues in digital marketing",
+                    "Familiarize with the key technologies and strategies used by firms in digital advertising",
+                    "Understand the key metrics in web and social media analytics",
+                    "Develop analytical abilities to understand how digital technology is influencing consumer behavior",
+                    "Make independent assessments of the digital marketing strategies of companies",
+                    "Gain practical experience with digital marketing tools and platforms"
+
+                ]
+            }
+        };
+
+        // Faculty Navigation
+        document.querySelectorAll('.faculty-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.faculty-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                const faculty = this.getAttribute('data-faculty');
+                document.querySelectorAll('.faculty-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(`faculty-${faculty}`).classList.add('active');
+            });
+        });
+
+        // View Course Details Modal
+        function viewCourseDetails(courseId) {
+            const course = courses[courseId];
+            const modal = document.getElementById('courseModal');
+            const title = document.getElementById('modalCourseTitle');
+            const body = document.getElementById('modalCourseBody');
+
+            title.textContent = course.title;
+
+            // In the viewCourseDetails function, update the modal content styles:
+            const modalContent = `
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+        <!-- INSTRUCTOR -->
+        <div style="grid-column: 1 / -1;">
+            <h3 style="color: var(--purple); margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--light-gray);">
+                Instructor
+            </h3>
+            <div style="display: flex; align-items: center; gap: 20px;">
+               <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+    ${
+        course.avatar
+        ? `<img src="${course.avatar}" 
+              alt="${course.instructor}" 
+              style="width:100%; height:100%; object-fit:cover;">`
+        : `<div style="
+              width:100%; height:100%;
+              background: var(--purple);
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              color:white;
+              font-weight:bold;
+              font-size:1.5rem;">
+              ${course.instructor.split(' ').map(n => n[0]).join('')}
+           </div>`
+    }
+</div>
+
+                <div>
+                    <p style="font-weight: 700; margin-bottom: 5px; font-size: 1.2rem; color: var(--dark-blue);">
+                        ${course.instructor}
+                    </p>
+                    <p style="color: var(--dark-blue); margin-bottom: 5px; opacity: 0.8;">
+                        ${course.email}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- COURSE INFORMATION -->
+        <div>
+            <h3 style="color: var(--purple); margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--light-gray);">
+                Course Information
+            </h3>
+            <div style="background: var(--gray-bg); padding: 25px; border-radius: 12px;">
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Faculty:</strong> ${course.faculty}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Department:</strong> ${course.department}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Course Code:</strong> ${course.code}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">ECTS Credits:</strong> ${course.ects}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Format:</strong> ${course.format}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Max Participants:</strong> ${course.maxParticipants}</p>
+                <p style="margin-bottom: 12px;"><strong style="color: var(--purple);">Prerequisites:</strong> ${course.prerequisites}</p>
+            </div>
+        </div>
+
+        <!-- COURSE DESCRIPTION -->
+        <div>
+            <h3 style="color: var(--purple); margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid var(--light-gray);">
+                Course Description
+            </h3>
+            <div style="background: var(--gray-bg); padding: 25px; border-radius: 12px;">
+                <p style="white-space: pre-line; line-height: 1.7; color: var(--dark-blue);">
+                    ${course.description}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    ${course.learningOutcomes ? `
+        <div style="margin-top: 30px;">
+            <h3 style="color: var(--purple); margin-bottom: 15px; padding-bottom: 10px; border-bottom: 2px solid var(--light-gray);">
+                <i class="fas fa-bullseye"></i> Learning Outcomes
+            </h3>
+            <ul style="list-style: none; background: var(--gray-bg); padding: 20px; border-radius: 10px;">
+                ${course.learningOutcomes.map(outcome => `
+                    <li style="padding: 10px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: flex-start; gap: 10px;">
+                        <i class="fas fa-check-circle" style="color: var(--orange); margin-top: 3px;"></i>
+                        <span style="color: var(--dark-blue);">${outcome}</span>
+                    </li>
+                `).join('')}
+            </ul>
+        </div>
+    ` : ''}
+
+    <div style="margin-top: 40px; border-top: 2px solid var(--light-gray); padding-top: 30px; display: flex; justify-content: space-between; align-items: center;">
+        <button class="btn btn-primary" onclick="enrollCourse('${courseId}'); closeModal();" style="padding: 15px 40px; font-size: 1.1rem;">
+            <i class="fas fa-user-plus"></i> Enroll in This Course
+        </button>
+        <button class="btn btn-secondary" onclick="closeModal();" style="padding: 15px 40px; font-size: 1.1rem;">
+            <i class="fas fa-times"></i> Close
+        </button>
+    </div>
+`;
+
+            body.innerHTML = modalContent;
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('courseModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('courseModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        // Enrollment function
+        function enrollCourse(courseId) {
+            const course = courses[courseId];
+            const availableSeats = Math.floor(Math.random() * course.maxParticipants) + 1;
+            
+            const confirmEnroll = confirm(`Enroll in "${course.title}"?\n\n• ECTS Credits: ${course.ects}\n• Available Seats: ${availableSeats} of ${course.maxParticipants}\n• Instructor: ${course.instructor}\n\nYou will receive enrollment confirmation via email.`);
+            
+            if (confirmEnroll) {
+                alert(`Successfully enrolled in "${course.title}"!\n\nCheck your email for confirmation and next steps. An invoice for program fees will be sent separately.`);
+            }
+        }
+
+        // Program fees function
+        function viewProgramFees() {
+            alert(`PROGRAM FEES INFORMATION\n\nErasmus+ Blended Online Mobility Courses:\n\n• 5 ECTS Courses: €1,500 per course\n• 6 ECTS Courses: €1,800 per course\n\nInclusions:\n- All digital learning materials\n- Online platform access\n- Instructor support\n- ECTS transcript\n- Certificate of completion\n\nPayment Plans:\n- Full payment: 5% discount\n- Two installments: Available\n- Three installments: Available (with 3% admin fee)\n\nScholarships:\nLimited scholarships available based on merit and need.\n\nFor detailed fee structure and payment options, please visit the university website or contact the international office.`);
+        }
+
+        // Initialize with random available seats
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.course-card').forEach(card => {
+                const totalSeats = parseInt(card.getAttribute('data-seats'));
+                const availableSeats = Math.floor(Math.random() * totalSeats) + 1;
+            });
+        });
+    </script>
+</body>
+
+</html>

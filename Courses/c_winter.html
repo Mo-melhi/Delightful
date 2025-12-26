@@ -1,0 +1,1923 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>University Erasmus+ Course Catalog | Blended Online Mobility Programs
+    </title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        /* ===== Navigation ===== */
+        
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 60px;
+            background: white;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .navbar .logo-university,
+        .navbar .logo-program {
+            height: 75px;
+            width: auto;
+            object-fit: contain;
+        }
+        
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .navbar a {
+            text-decoration: none;
+            color: #111;
+            font-weight: 500;
+            position: relative;
+        }
+        
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background: #662483;
+            left: 0;
+            bottom: -5px;
+            transition: 0.3s;
+        }
+        
+        .navbar a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--black);
+            border-radius: 3px;
+            transition: all var(--transition-speed);
+        }
+        /* ============================================
+   DROPDOWN BASE
+   ============================================ */
+        
+        .dropdown {
+            position: relative;
+        }
+        /* Dropdown container */
+        
+        .dropdown-menu {
+            position: absolute;
+            top: calc(100% + 5px);
+            left: 0;
+            background: white;
+            padding: 10px 0;
+            border-radius: 6px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            white-space: nowrap;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            /* HIDDEN BY DEFAULT, BUT WITH TRANSITIONS */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            /* when hiding: wait 1s before visibility changes */
+            transition: opacity 0.25s ease 0.3s, visibility 0s linear 0.3s;
+        }
+        /* Show dropdown on hover */
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            /* when showing: no delay */
+            transition: opacity 0.25s ease, visibility 0s linear 0s;
+        }
+        /* Dropdown links */
+        
+        .dropdown-menu a {
+            font-size: 0.85rem;
+            color: #111;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 6px 15px;
+            position: relative;
+        }
+        /* hover underline */
+        
+        .dropdown-menu a::after {
+            content: "";
+            width: 0%;
+            height: 2px;
+            background: #662483;
+            position: absolute;
+            left: 0;
+            bottom: -3px;
+            transition: 0.3s;
+        }
+        
+        .dropdown-menu a:hover::after {
+            width: 100%;
+        }
+        /* ------------------------------ */
+        /* Social Icons – right of header */
+        /* ------------------------------ */
+        
+        .social-icons {
+            justify-self: end;
+            /* push to right side of header */
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            color: #111;
+            /* icon color (fill="currentColor" uses this) */
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            color: #ec008c;
+            transform: scale(1.1);
+        }
+        
+        .social-icon svg {
+            width: 22px;
+            height: 22px;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 150px 20px;
+        }
+        /* Header Styles */
+        
+        .header {
+            position: static;
+            background: linear-gradient(135deg, #5A1F8E 0%, #4A1478 100%);
+            color: white;
+            padding: 120px 0 60px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .logo-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .university-info h1 {
+            font-size: 2.4rem;
+            margin-bottom: 8px;
+            font-weight: 800;
+        }
+        
+        .university-info p {
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+        
+        .header-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+            width: 100%;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        /* Navigation */
+        
+        .faculty-nav {
+            background: white;
+            padding: 0 20px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 30px;
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+        
+        .faculty-nav-list {
+            display: flex;
+            list-style: none;
+            justify-content: space-between;
+        }
+        
+        .faculty-nav-item {
+            padding: 20px 25px;
+            cursor: pointer;
+            text-align: center;
+            flex: 1;
+            transition: all 0.3s ease;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .faculty-nav-item:hover {
+            background: #f8f9fa;
+        }
+        
+        .faculty-nav-item.active {
+            border-bottom: 3px solid #5A1F8E;
+            background: #f8f9fa;
+        }
+        
+        .faculty-nav-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .faculty-nav-item.economics .faculty-nav-icon {
+            color: #5A1F8E;
+        }
+        
+        .faculty-nav-item.arts .faculty-nav-icon {
+            color: #9c27b0;
+        }
+        
+        .faculty-nav-item.medicine .faculty-nav-icon {
+            color: #e53935;
+        }
+        /* Controls */
+        
+        .controls-bar {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        /* Courses Grid */
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 35px;
+            margin-bottom: 60px;
+        }
+        /* Course Card */
+        
+        .course-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            border: 1px solid #eaeaea;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FFD600;
+            color: #5A1F8E;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            z-index: 2;
+        }
+        
+        .course-header {
+            padding: 30px;
+            border-bottom: 1px solid #eaeaea;
+            position: relative;
+        }
+        
+        .course-faculty {
+            display: inline-block;
+            background: rgba(90, 31, 142, 0.1);
+            color: #5A1F8E;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .course-title {
+            color: #5A1F8E;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+        
+        .course-body {
+            padding: 30px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-description {
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.7;
+            font-size: 1.05rem;
+            flex-grow: 1;
+        }
+        
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .instructor-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #5A1F8E, #4A1478);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+        
+        .instructor-info h4 {
+            color: #5A1F8E;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+        
+        .instructor-info p {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        .instructor-info a {
+            color: #5A1F8E;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 5px;
+        }
+        
+        .instructor-info a:hover {
+            text-decoration: underline;
+        }
+        
+        .course-details {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .course-details li {
+            padding: 12px 0;
+            border-bottom: 1px solid #f5f5f5;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .course-details li:last-child {
+            border-bottom: none;
+        }
+        
+        .detail-label {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .detail-value {
+            color: #5A1F8E;
+            font-weight: 600;
+            font-size: 1rem;
+            text-align: right;
+        }
+        
+        .course-footer {
+            padding: 0 30px 30px;
+            margin-top: auto;
+        }
+        
+        .course-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .btn {
+            padding: 15px 25px;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            font-size: 1.05rem;
+            flex: 1;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #5A1F8E, #4A1478);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(90, 31, 142, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: #5A1F8E;
+            border: 2px solid #5A1F8E;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(90, 31, 142, 0.05);
+            transform: translateY(-3px);
+        }
+        /* Faculty Sections */
+        
+        .faculty-section {
+            margin-bottom: 60px;
+            display: none;
+        }
+        
+        .faculty-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .faculty-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 3px solid #eaeaea;
+        }
+        
+        .faculty-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .faculty-economics {
+            background: linear-gradient(135deg, #5A1F8E, #4A1478);
+        }
+        
+        .faculty-arts {
+            background: linear-gradient(135deg, #9c27b0, #673ab7);
+        }
+        
+        .faculty-medicine {
+            background: linear-gradient(135deg, #e53935, #d81b60);
+        }
+        
+        .faculty-header h2 {
+            color: #5A1F8E;
+            font-size: 2.2rem;
+            font-weight: 800;
+            flex-grow: 1;
+        }
+        
+        .faculty-count {
+            background: #eaeaea;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #555;
+        }
+        /* Assessment Section */
+        
+        .assessment-section {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 12px;
+            margin-top: 25px;
+            border-left: 5px solid #5A1F8E;
+        }
+        
+        .assessment-section h4 {
+            color: #5A1F8E;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .assessment-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .assessment-item {
+            text-align: center;
+            padding: 25px 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .assessment-item:hover {
+            transform: translateY(-5px);
+        }
+        
+        .assessment-percentage {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #5A1F8E;
+            margin-bottom: 10px;
+        }
+        
+        .assessment-label {
+            color: #666;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        /* Disclaimer */
+        
+        .disclaimer {
+            background: #FFF3CD;
+            border-left: 5px solid #FFD600;
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 30px 0;
+            font-size: 0.95rem;
+            color: #856404;
+        }
+        
+        .disclaimer i {
+            margin-right: 10px;
+        }
+        /* Curriculum Table */
+        
+        .curriculum-section {
+            margin-top: 30px;
+        }
+        
+        .curriculum-section h4 {
+            color: #5A1F8E;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .curriculum-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .curriculum-table th {
+            background: #5A1F8E;
+            color: white;
+            text-align: left;
+            padding: 18px;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .curriculum-table td {
+            padding: 18px;
+            border-bottom: 1px solid #eaeaea;
+            vertical-align: top;
+        }
+        
+        .curriculum-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .curriculum-table tr:hover {
+            background: #edf2f7;
+        }
+        
+        .week-label {
+            background: #5A1F8E;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        /* Materials Section */
+        
+        .materials-section {
+            margin-top: 30px;
+        }
+        
+        .materials-section h4 {
+            color: #5A1F8E;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .materials-list {
+            list-style: none;
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+        }
+        
+        .materials-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+        
+        .materials-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .materials-list i {
+            color: #5A1F8E;
+            margin-top: 3px;
+        }
+        /* Footer */
+        
+        .footer {
+            background: #5A1F8E;
+            color: white;
+            padding: 60px 0 30px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        
+        .footer-section p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+        }
+        
+        .footer-bottom a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+        }
+        
+        .footer-bottom a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        /* Modal */
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 95%;
+            max-width: 1000px;
+            margin: 40px auto;
+            border-radius: 16px;
+            position: relative;
+            animation: modalFadeIn 0.4s ease;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .modal-header {
+            padding: 30px;
+            border-bottom: 1px solid #eaeaea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #5A1F8E 0%, #4A1478 100%);
+            color: white;
+            border-radius: 16px 16px 0 0;
+        }
+        
+        .modal-header h2 {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+        
+        .close-modal {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .close-modal:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .modal-body {
+            padding: 40px;
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 1200px) {
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            }
+            .header-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .faculty-nav-list {
+                flex-direction: column;
+            }
+            .faculty-nav-item {
+                padding: 15px;
+                text-align: left;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+            .faculty-nav-icon {
+                margin-bottom: 0;
+                font-size: 1.3rem;
+            }
+            .controls-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .courses-grid {
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-area {
+                flex-direction: column;
+                text-align: center;
+            }
+            .university-info h1 {
+                font-size: 2rem;
+            }
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            .faculty-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            .faculty-count {
+                align-self: center;
+            }
+            .course-actions {
+                flex-direction: column;
+            }
+            .assessment-grid {
+                grid-template-columns: 1fr;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .filter-controls {
+                flex-direction: column;
+                width: 100%;
+            }
+            .filter-select {
+                width: 100%;
+            }
+            .modal-content {
+                width: 100%;
+                margin: 20px auto;
+                border-radius: 0;
+            }
+            .modal-body {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <div class="logo-container">
+                <a href="../index.html" class="unique">
+                    <img src="../imgs/istanbul-aydin-university.png" alt="Istanbul Aydin University" class="logo-university">
+                </a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+
+                    <!-- WINTER -->
+                    <li class="dropdown">
+                        <a href="../winter/winter.html">WINTER</a>
+                        <div class="dropdown-menu">
+                            <a href="../winter/winter.html">Details of the program</a>
+                            <a href="../Courses/c_winter.html">Courses</a>
+                            <a href="../Accomodations/winter_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-w/WinterAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-w/Fees.html">Fees</a>
+                            <a href="../Application/Winter/Winterapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SPRING -->
+                    <li class="dropdown">
+                        <a href="../spring/spring.html">SPRING</a>
+                        <div class="dropdown-menu">
+                            <a href="../spring/spring.html">Details of the program</a>
+                            <a href="../Courses/c_spring.html">Courses</a>
+                            <a href="../Accomodations/spring_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-sp/SpringAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-sp/Fees-sp.html">Fees</a>
+                            <a href="../Application/Spring/Springapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SUMMER -->
+                    <li class="dropdown">
+                        <a href="../summer/summer.html">SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../summer/summer.html">Details of the program</a>
+                            <a href="../Courses/c_summer.html">Courses</a>
+                            <a href="../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- LATE SUMMER -->
+                    <li class="dropdown">
+                        <a href="../summer/summer.html">LATE SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../summer/summer.html">Details of the program</a>
+                            <a href="../Courses/c_summer.html">Courses</a>
+                            <a href="../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                <!-- No dropdown items -->
+                <li><a href="#PRACTICAL">PRACTICAL INFORMATION</a></li>
+                <li><a href="#CONTACT">CONTACT US</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="social-icons">
+            <a href="" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <a href="" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+    <!-- Header -->
+
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Faculty Navigation -->
+        <nav class="faculty-nav">
+            <ul class="faculty-nav-list">
+                <li class="faculty-nav-item economics active" data-faculty="economics">
+                    <i class="fas fa-chart-line faculty-nav-icon"></i>
+                    <span>Economics & Administrative Sciences</span>
+                </li>
+                <li class="faculty-nav-item arts" data-faculty="arts">
+                    <i class="fas fa-palette faculty-nav-icon"></i>
+                    <span>Fine Arts</span>
+                </li>
+                <li class="faculty-nav-item medicine" data-faculty="medicine">
+                    <i class="fas fa-heartbeat faculty-nav-icon"></i>
+                    <span>Medicine</span>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Faculty of Economics and Administrative Sciences -->
+        <section id="faculty-economics" class="faculty-section active">
+            <div class="faculty-header">
+                <div class="faculty-icon faculty-economics">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Faculty of Economics and Administrative Sciences
+                </h2>
+                <span class="faculty-count">3 Courses</span>
+            </div>
+
+            <div class="courses-grid" id="economics-courses">
+                <!-- Brand Management Course -->
+                <div class="course-card" data-ects="6" data-seats="30">
+                    <div class="course-badge">6 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Business
+                                    Management</span>
+                        <h3 class="course-title">Brand Management</h3>
+
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            A comprehensive course designed to immerse students in the world of branding, emphasizing its paramount importance in modern business. Students will explore the essence of brands, their strategic significance, and the dynamic landscape they operate in.
+                        </p>
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('brand-management')">
+                                        <i class="fas fa-info-circle"></i> Full
+                                        Details
+                                    </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('brand-management')">
+                                        <i class="fas fa-user-plus"></i> Enroll
+                                        Now
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Digital Marketing Course -->
+                <div class="course-card" data-ects="5" data-seats="30">
+                    <div class="course-badge">5 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Marketing & Digital
+                                    Media</span>
+                        <h3 class="course-title">Digital Marketing</h3>
+
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            Master digital marketing strategies including SEO, social media marketing, content strategy, and data analytics. Hands-on experience with digital marketing tools and platforms in the modern business environment.
+                        </p>
+
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('digital-marketing')">
+                                        <i class="fas fa-info-circle"></i> Full
+                                        Details
+                                    </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('digital-marketing')">
+                                        <i class="fas fa-user-plus"></i> Enroll
+                                        Now
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- International Organizations and World Politics Course -->
+                <div class="course-card" data-ects="5" data-seats="18">
+                    <div class="course-badge">5 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Political Science &
+                                    IR</span>
+                        <h3 class="course-title">International Organizations and World Politics</h3>
+
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            Explore international organizations' roles, functions, and effectiveness in world politics from theoretical and empirical perspectives. Analyze approaches of great powers and middle powers to global governance.
+                        </p>
+
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('international-organizations')">
+                                        <i class="fas fa-info-circle"></i> Full
+                                        Details
+                                    </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('international-organizations')">
+                                        <i class="fas fa-user-plus"></i> Enroll
+                                        Now
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty of Fine Arts -->
+        <section id="faculty-arts" class="faculty-section">
+            <div class="faculty-header">
+                <div class="faculty-icon faculty-arts">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <h2>Faculty of Fine Arts</h2>
+                <span class="faculty-count">1 Course</span>
+            </div>
+
+            <div class="courses-grid" id="arts-courses">
+                <!-- Art, History and Heritage of Anatolia Course -->
+                <div class="course-card" data-ects="5" data-seats="20">
+                    <div class="course-badge">5 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Art and Culture
+                                    Management</span>
+                        <h3 class="course-title">Art, History and Heritage of Anatolia</h3>
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            A two-week, interactive journey to discover the rich cultural and artistic heritage of Anatolia. Students will learn about Anatolian and Turkish art through presentations and experimental museum visits in Istanbul and Antalya.
+                        </p>
+
+                        <div class="course-instructor">
+                            <div class="instructor-avatar">
+                                <img src="imgs/Rembert.jpg" alt="Prof. Dr. Rembert Horstmann" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+                            </div>
+                            <div class="instructor-info">
+                                <h4>Assist. Prof. Dr. Mesut Batuhan Çankır
+                                </h4>
+                                <p>mesutcankir@aydin.edu.tr</p>
+                                <a href="#"><i class="fas fa-user"></i>
+                                            View Biography</a>
+                            </div>
+                        </div>
+
+                        <ul class="course-details">
+                            <li>
+                                <span class="detail-label">Course
+                                            Code:</span>
+                                <span class="detail-value">To be
+                                            announced soon</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Participants:</span>
+                                <span class="detail-value">Max 20
+                                            Students</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Prerequisites:</span>
+                                <span class="detail-value">None</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('anatolia-art')">
+                                        <i class="fas fa-info-circle"></i> Full
+                                        Details
+                                    </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('anatolia-art')">
+                                        <i class="fas fa-user-plus"></i> Enroll
+                                        Now
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Faculty of Medicine -->
+        <section id="faculty-medicine" class="faculty-section">
+            <div class="faculty-header">
+                <div class="faculty-icon faculty-medicine">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <h2>Faculty of Medicine</h2>
+                <span class="faculty-count">1 Course</span>
+            </div>
+
+            <div class="courses-grid" id="medicine-courses">
+                <!-- Genetics and Medical Biotechnology Course -->
+                <div class="course-card" data-ects="6" data-seats="20">
+                    <div class="course-badge">6 ECTS</div>
+                    <div class="course-header">
+                        <span class="course-faculty">Medical Biology and
+                                    Genetics</span>
+                        <h3 class="course-title">Genetics and Medical Biotechnology
+                        </h3>
+                    </div>
+
+                    <div class="course-body">
+                        <p class="course-description">
+                            Explore the rapid growth in genetic engineering technology and biotechnology research. Learn about innovative technologies to improve human health by preventing, diagnosing, and treating genetic diseases through hands-on laboratory experience.
+                        </p>
+
+                        <div class="course-instructor">
+                            <div class="instructor-avatar">
+                                <img src="imgs/Rembert.jpg" alt="Prof. Dr. Rembert Horstmann" style="width:60px; height:60px; border-radius:50%; object-fit:cover;">
+                            </div>
+                            <div class="instructor-info">
+                                <h4>Assist. Prof. Dr. Arta Armani</h4>
+                                <p>artaarmani@aydin.edu.tr</p>
+                                <a href="#"><i class="fas fa-user"></i>
+                                            View Biography</a>
+                            </div>
+                        </div>
+
+                        <ul class="course-details">
+                            <li>
+                                <span class="detail-label">Course
+                                            Code:</span>
+                                <span class="detail-value">MED111</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Participants:</span>
+                                <span class="detail-value">Max 20
+                                            Students</span>
+                            </li>
+                            <li>
+                                <span class="detail-label">Prerequisites:</span>
+                                <span class="detail-value">Basic
+                                            Genetics & Computer Skills</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="course-footer">
+                        <div class="course-actions">
+                            <button class="btn btn-secondary" onclick="viewCourseDetails('genetics-biotech')">
+                                        <i class="fas fa-info-circle"></i> Full
+                                        Details
+                                    </button>
+                            <button class="btn btn-primary" onclick="enrollCourse('genetics-biotech')">
+                                        <i class="fas fa-user-plus"></i> Enroll
+                                        Now
+                                    </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Erasmus+ Blended Online Mobility</h3>
+                    <p>Providing high-quality international education through flexible blended learning programs that combine online and mobility components.</p>
+                    <p>ECTS credits recognized across European higher education institutions.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Contact Information</h3>
+                    <p><i class="fas fa-envelope"></i> erasmus.programs@university.edu
+                    </p>
+                    <p><i class="fas fa-phone"></i> +1 (555) 123-4567
+                    </p>
+                    <p><i class="fas fa-map-marker-alt"></i> International Office, University Campus</p>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <a href="#" onclick="viewProgramFees()">Program
+                                Fees</a>
+                    <a href="#">Application Process</a>
+                    <a href="#">ECTS Information</a>
+                    <a href="#">Academic Calendar 2025</a>
+                    <a href="#">Visa & Accommodation</a>
+                </div>
+
+                <div class="footer-section">
+                    <h3>Follow Our Programs</h3>
+                    <a href="#"><i class="fab fa-twitter"></i>
+                                Twitter</a>
+                    <a href="#"><i class="fab fa-linkedin"></i>
+                                LinkedIn</a>
+                    <a href="#"><i class="fab fa-instagram"></i>
+                                Instagram</a>
+                    <a href="#"><i class="fab fa-youtube"></i> YouTube
+                                Channel</a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>Copyright © 2025 Delightful Istanbul | Erasmus+ Blended Online Mobility Programs</p>
+                <p>All course details are subject to change. The university reserves the right to cancel courses with insufficient enrollment.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Course Details Modal -->
+    <div class="modal" id="courseModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalCourseTitle">Course Details</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalCourseBody">
+                <!-- Course details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Course Data with all details from your files
+        const courses = {
+            'brand-management': {
+                title: "Brand Management",
+                faculty: "Faculty of Economics and Administrative Sciences",
+                department: "Business Management",
+                ects: 6,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: "Prof. Dr. Rembert Horstmann",
+                email: "r.horstmann@cbs.de",
+                avatar: "imgs/rembert.jpg",
+                biography: "Click Here",
+                code: "BUS497",
+                maxParticipants: 30,
+                prerequisites: "Basic Marketing Management Knowledge",
+                participants: "All Students Interested in Brand Management and Marketing in a Colorful World",
+                description: `Brand Management is a comprehensive course designed to immerse students in the world of branding, emphasizing its paramount importance in modern business. Through this course, students will explore the essence of brands, their strategic significance, and the dynamic landscape they operate in. The curriculum delves into fundamental branding principles, equipping students with the skills to analyze, create, and nurture strong brand identities. It also encompasses consumer behavior insights, global brand management challenges, ethical considerations, and the measurement of brand effectiveness. Moreover, students will engage in practical exercises, including a group project, to develop a deep understanding of brand management's real-world applications. This course empowers participants to become adept brand strategists ready to tackle the evolving branding challenges of the future.
+
+This course aims to equip students with a profound understanding of brand management, enabling them to navigate the complex and ever-changing world of branding with confidence and expertise. Through a blend of theoretical knowledge and practical applications, students will develop the ability to analyze, create, and strategically manage brands to drive business success. By exploring the core principles of branding, students will gain insights into the significance of brand equity, positioning, and differentiation. They will also delve into the intricacies of consumer behavior and perception, learning how to build and maintain strong brand relationships.
+
+Furthermore, this course aims to foster a global perspective on brand management, addressing the challenges and opportunities associated with international markets. It emphasizes ethical considerations in branding and equips students with the tools to measure and evaluate brand performance effectively. Ultimately, this course aims to empower students to become effective brand strategists who can apply their knowledge to solve real-world brand management challenges and make informed decisions in an increasingly competitive and dynamic business environment.`,
+                learningOutcomes: [
+                    "Understand the core concepts of brand management",
+                    "Understand the factors that will increase the success of brand management",
+                    "Understand the brand management process of a person/product",
+                    "Understand the impacts of the global business world on brand management"
+                ],
+                curriculum: {
+                    "Week 1": {
+                        "Day 1": "Basics of Marketing",
+                        "Day 2": "Market Analysis Segmentation, Targeting, and Positioning The Marketing Mix: 4Ps of Marketing Product, Price, Place, and Promotion Strategies. A Communication Perspective, Brand Positioning, and Value",
+                        "Day 3": "Brands and Brand Management: Why Do We Study It?",
+                        "Day 4": "The Role of Brands Branding Concepts: Brand Awareness (Recognition and Recall), Brand Identity and Brand Image, Brand Personality, Brand Judgments, and Brand Loyalty",
+                        "Day 5": "Brand Equity; Marketing Programs for Brand Equity"
+                    },
+                    "Week 2": {
+                        "Day 1": "Choosing Brand Elements: Other Branding Concepts",
+                        "Day 2": "Brand Portfolio Management",
+                        "Day 3": "Global Branding",
+                        "Day 4": "Managing Brands in The Digital Era",
+                        "Day 5": "Presentations"
+                    }
+                },
+                onlineComponent: "Project Work/Presentations",
+                assessment: [{
+                    component: "Attendance",
+                    percentage: "10%"
+                }, {
+                    component: "Homework",
+                    percentage: "20%"
+                }, {
+                    component: "Project ",
+                    percentage: "40%"
+                }, {
+                    component: "Final Exam",
+                    percentage: "30%"
+                }],
+                materials: [
+                    "Lecture Notes to be shared during the courses",
+                    "Keller, K. L. (2019). Strategic Brand Management: Building, Measuring, and Managing Brand Equity (5th ed.). Pearson",
+                    "Christoph Burmann, Nicola-Maria Riley, Tilo Halaszovich, Michael Schade (2017), Identity-Based Brand Management. SpringerGabler",
+                    "Aaker, D. A. (2014). Aaker on Branding, 20 Principles that Drive Success. Morgan James Publishing",
+                    "Gary Armstrong, Philip Kotler, Marc Oliver Opresnik (2020). Marketing – An Introduction. Pearson"
+                ],
+                disclaimer: "IAU reserves the right to cancel any of the courses if insufficient enrollment occurs (Less than 10 participants)"
+            },
+            'digital-marketing': {
+                title: "Digital Marketing",
+                faculty: "Faculty of Economics and Administrative Sciences",
+                department: "Marketing & Digital Media",
+                ects: 5,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: "Prof. Dr. Digital Marketing",
+                email: "digital.marketing@university.edu",
+                avatar: "imgs/rembert.jpg",
+                code: "DIGI/789",
+                maxParticipants: 30,
+                prerequisites: "Basic Marketing Knowledge",
+                description: "Master digital marketing strategies including SEO, social media marketing, content strategy, and data analytics. Hands-on experience with digital marketing tools and platforms in the modern business environment.",
+                learningOutcomes: [
+                    "Develop effective digital marketing campaigns",
+                    "Analyze digital marketing metrics and ROI",
+                    "Implement SEO and content marketing strategies",
+                    "Utilize social media platforms for marketing"
+                ]
+            },
+            'international-organizations': {
+                title: "International Organizations and World Politics",
+                faculty: "Faculty of Economics and Administrative Sciences",
+                department: "Political Science & International Relations",
+                ects: 5,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: "Prof. Dr. Fritz Kostman",
+                email: "fritzkostman@cyphs.edu.cn",
+                avatar: "imgs/rembert.jpg",
+                code: "POLS/IR/951",
+                maxParticipants: 18,
+                prerequisites: "Basic knowledge in international politics",
+                description: "Explore international organizations' roles, functions, and effectiveness in world politics from theoretical and empirical perspectives. Analyze approaches of great powers and middle powers to global governance."
+            },
+            'anatolia-art': {
+                title: "Art, History and Heritage of Anatolia",
+                faculty: "Faculty of Fine Arts",
+                department: "Art and Culture Management",
+                ects: 5,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: "Assist. Prof. Dr. Mesut Batuhan Çankır",
+                email: "mesutcankir@aydin.edu.tr",
+                avatar: "imgs/rembert.jpg",
+                biography: "Click Here",
+                code: "To be announced soon",
+                maxParticipants: 20,
+                prerequisites: "None",
+                participants: "All undergraduate and graduate students",
+                description: `Istanbul and Antalya… One is the beautiful jewel of the Mediterranean, full of history and culture. The other connects two continents and has been a meeting point for civilizations for centuries. This special program offers participants a two-week, interactive journey to discover the rich cultural and artistic heritage of Anatolia.
+
+Within the two weeks, students will learn quite a lot of information about Anatolian and Turkish art through presentations in classrooms, and then they will apply this information in museums experimentally. The Course contains Hittite, Phrygian, Lydian Arts, Traditional Arts, Calligraphy, Miniatures, Tiles, the best works of contemporary Turkish artists, and many more.
+
+The museums that will be visited are the Istanbul Archeological Museums, Topkapı Museum, Sakıp Sabancı Museum, Pera Museum, Proje 4L Museum, İstanbul State Art and Sculpture Museum, and Istanbul Modern Museum.`,
+                learningOutcomes: [
+                    "Identify Anatolian, Traditional, and Contemporary Turkish art",
+                    "See and Discover Istanbul's Museums",
+                    "Understand the Differences Between Art Disciplines and Movements"
+                ],
+                curriculum: {
+                    "Week 1": {
+                        "Day 1": "Anatolian Civilizations",
+                        "Day 2": "Traditional Turkish Art – I",
+                        "Day 3": "Traditional Turkish Art – II",
+                        "Day 4": "Contemporary Turkish Art – I",
+                        "Day 5": "Contemporary Turkish Art – II"
+                    },
+                    "Week 2": {
+                        "Day 1": "Visiting Sakıp Sabancı Museum",
+                        "Day 2": "Visiting Museum of Turkish and Islamic Art",
+                        "Day 3": "Visiting Pera Museum & Taksim Galleries",
+                        "Day 4": "Visiting Istanbul Modern",
+                        "Day 5": "Final Exam & Wrap-up"
+                    }
+                },
+                onlineComponent: "Project Presentations",
+                assessment: [{
+                    component: "Midterm Exam",
+                    percentage: "20%"
+                }, {
+                    component: "Project Presentation",
+                    percentage: "40%"
+                }, {
+                    component: "Final Exam",
+                    percentage: "40%"
+                }],
+                materials: ["Readings will be shared during the course"],
+                disclaimer: "IAU reserves the right to cancel any of the courses if insufficient enrollment occurs (Less than 10 participants)"
+            },
+            'genetics-biotech': {
+                title: "Genetics and Medical Biotechnology",
+                faculty: "Faculty of Medicine",
+                department: "Medical Biology and Genetics",
+                ects: 6,
+                format: "Blended Online Mobility Erasmus+",
+                instructor: "Assist. Prof. Dr. Arta Armani",
+                email: "artaarmani@aydin.edu.tr",
+                avatar: "imgs/rembert.jpg",
+                biography: "Click Here",
+                code: "MED111",
+                maxParticipants: 20,
+                prerequisites: "Basic Genetics and Computer Skills",
+                participants: "Students from the Faculty of Medicine, Genetic Engineering, Science, and Arts (Genetics, Biotechnology, Bioinformatics, Neuroscience, Biochemistry) departments.",
+                description: `Medical biotechnology, with the growth in genetic engineering technology and the advancement of research in biotechnology, has experienced rapid growth in recent years. This natural science field leads to opportunities to develop innovative technologies to improve human health by preventing, diagnosing, and treating genetic diseases. In this line, Medical Biotechnology has revolutionized the health system and combines engineering technologies with biological sciences to regulate systems and living organisms. Genome sequencing, cloning, stem cell research, and gene therapy, combined with CRISPR/Cas9 technology, are the most important benefits of genetic engineering that make this field indispensable in the modern world.
+
+The course aims to teach advanced lessons in the biological processes meant for medical biotechnology and other purposes. During the course, the concept of medical biotechnology and its connections with human genetic diseases will be covered systematically from the central dogma of genetics and then generalized with the recent applications in biotechnology, with special topics.
+
+The course is designed in two parts which will provide students the opportunity to learn not only the theoretical part of the course but also apply the practical part in our laboratories by using Genomic DNA Isolation and Measurement Procedures, Polymerase Chain Reaction (PCR), RFLP, Agarose Gel Electrophoresis, Sequencing, and Bioinformatics Tools. A unique aspect of this course is its focus on biotechnology in medicine.`,
+                learningOutcomes: [
+                    "Understand Basic Concepts of Genetics and Medical Biotechnology",
+                    "Learn Specific Techniques Applied in Medical Genetics",
+                    "Gain Knowledge About Genetic Engineering Technology",
+                    "Learn Innovative Techniques in Medical Biotechnology"
+                ],
+                curriculum: {
+                    "Week 1": {
+                        "Day 1": "The Biotechnology Century and Its Workforce",
+                        "Day 2": "Introduction to Genes and Genomes, Genomic DNA Isolation, and Measurement",
+                        "Day 3": "Genetic Engineering: Recombinant DNA Technology and PCR Experiment",
+                        "Day 4": "Proteins as Final Products of Genes and RFLP Experiment",
+                        "Day 5": "Medical Biotechnology and Its Applications: Agarose Gel Electrophoresis"
+                    },
+                    "Week 2": {
+                        "Day 1": "Bioinformatics and Genomic Databases",
+                        "Day 2": "The Greatest Discovery: The Human Genome Project and Sequence Analysis",
+                        "Day 3": "Cancer Genetics, Pharmacogenomics and Bioinformatics Tools",
+                        "Day 4": "Gene Therapy, CRISPR/Cas9 Technology, and Agarose Gel Electrophoresis",
+                        "Day 5": "Ethics and Medical Biotechnology"
+                    }
+                },
+                onlineComponent: "Research (HW) Project Presentations",
+                assessment: [{
+                    component: "Research (HW) Project Presentation",
+                    percentage: "30%"
+                }, {
+                    component: "Midterm Exam",
+                    percentage: "30%"
+                }, {
+                    component: "Final Exam",
+                    percentage: "40%"
+                }],
+                materials: [],
+                disclaimer: "IAU reserves the right to cancel any of the courses if insufficient enrollment occurs (Less than 10 participants)"
+            }
+        };
+
+        // Faculty Navigation
+        document.querySelectorAll('.faculty-nav-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Update active nav item
+                document.querySelectorAll('.faculty-nav-item').forEach(navItem => {
+                    navItem.classList.remove('active');
+                });
+                this.classList.add('active');
+
+                // Show corresponding faculty section
+                const faculty = this.getAttribute('data-faculty');
+                document.querySelectorAll('.faculty-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                document.getElementById(`faculty-${faculty}`).classList.add('active');
+            });
+        });
+
+
+        // View Course Details Modal
+        function viewCourseDetails(courseId) {
+            const course = courses[courseId];
+            const modal = document.getElementById('courseModal');
+            const title = document.getElementById('modalCourseTitle');
+            const body = document.getElementById('modalCourseBody');
+
+            title.textContent = course.title;
+
+            // Build curriculum table HTML
+            let curriculumHTML = '';
+            if (course.curriculum) {
+                curriculumHTML = `
+                    <div class="curriculum-section">
+                        <h4><i class="fas fa-calendar-alt"></i> Course Curriculum</h4>
+                        <table class="curriculum-table">
+                            <thead>
+                                <tr>
+                                    <th>Week</th>
+                                    <th>Day 1</th>
+                                    <th>Day 2</th>
+                                    <th>Day 3</th>
+                                    <th>Day 4</th>
+                                    <th>Day 5</th>
+                                </tr>
+                            </thead>
+                            <tbody>`;
+
+                for (const week in course.curriculum) {
+                    curriculumHTML += `
+                        <tr>
+                            <td><span class="week-label">${week}</span></td>
+                            <td>${course.curriculum[week]["Day 1"] || '-'}</td>
+                            <td>${course.curriculum[week]["Day 2"] || '-'}</td>
+                            <td>${course.curriculum[week]["Day 3"] || '-'}</td>
+                            <td>${course.curriculum[week]["Day 4"] || '-'}</td>
+                            <td>${course.curriculum[week]["Day 5"] || '-'}</td>
+                        </tr>`;
+                }
+
+                curriculumHTML += `
+                            </tbody>
+                        </table>
+                    </div>`;
+            }
+
+            // Build assessment HTML
+            let assessmentHTML = '';
+            if (course.assessment) {
+                assessmentHTML = `
+    <div class="assessment-section">
+        <h4><i class="fas fa-chart-bar"></i> Assessment and Evaluation</h4>
+        
+        <div class="assessment-grid" style="
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+            flex-wrap: nowrap;
+        ">
+            ${course.assessment.map(item => `
+                <div class="assessment-item" style="
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    white-space: nowrap;
+                ">
+                    <div class="assessment-percentage">${item.percentage}</div>
+                    <div class="assessment-label">${item.component}</div>
+                </div>
+            `).join('')}
+        </div>
+    </div>`;
+}
+
+            // Build materials HTML
+            let materialsHTML = '';
+            if (course.materials && course.materials.length > 0) {
+                materialsHTML = `
+                    <div class="materials-section">
+                        <h4><i class="fas fa-book"></i> Course Materials & Recommended Books</h4>
+                        <ul class="materials-list">
+                            ${course.materials.map(material => `
+                                <li><i class="fas fa-book-open"></i> ${material}</li>
+                            `).join('')}
+                        </ul>
+                    </div>`;
+            }
+            
+            // Build disclaimer HTML
+            let disclaimerHTML = '';
+            if (course.disclaimer) {
+                disclaimerHTML = `
+                    <div class="disclaimer">
+                        <p><i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> ${course.disclaimer}</p>
+                    </div>`;
+            }
+            
+            // Build learning outcomes HTML
+            let outcomesHTML = '';
+            if (course.learningOutcomes) {
+                outcomesHTML = `
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: #5A1F8E; margin-bottom: 15px;"><i class="fas fa-bullseye"></i> Learning Outcomes</h4>
+                        <ul style="list-style: none; background: #f8f9fa; padding: 20px; border-radius: 10px;">
+                            ${course.learningOutcomes.map(outcome => `
+                                <li style="padding: 10px 0; border-bottom: 1px solid #eaeaea; display: flex; align-items: flex-start; gap: 10px;">
+                                    <i class="fas fa-check-circle" style="color: #5A1F8E; margin-top: 3px;"></i>
+                                    <span>${outcome}</span>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>`;
+            }
+            
+            const modalContent = `
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-bottom: 40px;">
+
+    <!-- INSTRUCTOR – FULL WIDTH -->
+    <div style="grid-column: 1 / -1;">
+        <h3 style="color: #5A1F8E; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #eaeaea;">
+            Instructor
+        </h3>
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <div style="width: 70px; height: 70px; border-radius: 50%; overflow: hidden; flex-shrink: 0;">
+                ${
+                    course.avatar
+                        ? `<img src="${course.avatar}" style="width: 100%; height: 100%; object-fit: cover;">`
+                        : `<div style="width: 100%; height: 100%; background: linear-gradient(135deg, #5A1F8E, #4A1478); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; font-size: 1.5rem;">
+                                ${course.instructor.split(' ').map(n => n[0]).join('')}
+                           </div>`
+                }
+            </div>
+
+            <div>
+                <p style="font-weight: 700; margin-bottom: 5px; font-size: 1.2rem;">
+                    ${course.instructor}
+                </p>
+                <p style="color: #666; margin-bottom: 5px;">
+                    ${course.email}
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- COURSE INFORMATION -->
+    <div>
+        <h3 style="color: #5A1F8E; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #eaeaea;">
+            Course Information
+        </h3>
+
+        <div style="background: #f8f9fa; padding: 25px; border-radius: 12px;">
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Faculty:</strong> ${course.faculty}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Department:</strong> ${course.department}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Course Code:</strong> ${course.code}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">ECTS Credits:</strong> ${course.ects}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Format:</strong> ${course.format}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Max Participants:</strong> ${course.maxParticipants}</p>
+            <p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Prerequisites:</strong> ${course.prerequisites}</p>
+            ${course.participants ? `<p style="margin-bottom: 12px;"><strong style="color: #5A1F8E;">Who can participate:</strong> ${course.participants}</p>` : ''}
+        </div>
+    </div>
+
+    <!-- COURSE DESCRIPTION -->
+    <div>
+        <h3 style="color: #5A1F8E; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 2px solid #eaeaea;">
+            Course Description
+        </h3>
+
+        <div style="background: #f8f9fa; padding: 25px; border-radius: 12px; max-height: 400px; overflow-y: auto;">
+            <p style="white-space: pre-line; line-height: 1.7;">
+                ${course.description}
+            </p>
+        </div>
+    </div>
+
+</div>
+
+                
+                ${outcomesHTML}
+                
+                ${curriculumHTML}
+                
+                ${course.onlineComponent ? `
+                    <div style="margin-top: 30px; background: #F3E5F5; padding: 20px; border-radius: 10px; border-left: 5px solid #5A1F8E;">
+                        <h4 style="color: #4A1478; margin-bottom: 10px;"><i class="fas fa-laptop"></i> Online Component</h4>
+                        <p style="color: #4A1478; font-weight: 500;">${course.onlineComponent}</p>
+                    </div>
+                ` : ''}
+                
+                ${assessmentHTML}
+                
+                ${materialsHTML}
+                
+                ${disclaimerHTML}
+                
+              <div style="
+    margin-top: 40px;
+    border-top: 2px solid #eaeaea;
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+">
+    <button class="btn btn-primary" onclick="enrollCourse('${courseId}'); closeModal();" 
+        style="padding: 15px 40px; font-size: 1.1rem;">
+        <i class="fas fa-user-plus"></i> Enroll in This Course
+    </button>
+
+    <button class="btn btn-secondary" onclick="closeModal();" 
+        style="padding: 15px 40px; font-size: 1.1rem;">
+        <i class="fas fa-times"></i> Close
+    </button>
+</div>
+
+                </div>`;
+            
+            body.innerHTML = modalContent;
+            modal.style.display = 'block';
+        }
+        
+        function closeModal() {
+            document.getElementById('courseModal').style.display = 'none';
+        }
+        
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('courseModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        // Enrollment function
+        function enrollCourse(courseId) {
+            const course = courses[courseId];
+            const availableSeats = Math.floor(Math.random() * course.maxParticipants) + 1;
+            
+            const confirmEnroll = confirm(`Enroll in "${course.title}"?\n\n• ECTS Credits: ${course.ects}\n• Available Seats: ${availableSeats} of ${course.maxParticipants}\n• Instructor: ${course.instructor}\n\nYou will receive enrollment confirmation via email.`);
+            
+            if (confirmEnroll) {
+                alert(`Successfully enrolled in "${course.title}"!\n\nCheck your email for confirmation and next steps. An invoice for program fees will be sent separately.`);
+            }
+        }
+        
+        // Program fees function
+        function viewProgramFees() {
+            alert(`PROGRAM FEES INFORMATION\n\nErasmus+ Blended Online Mobility Courses:\n\n• 5 ECTS Courses: €1,500 per course\n• 6 ECTS Courses: €1,800 per course\n\nInclusions:\n- All digital learning materials\n- Online platform access\n- Instructor support\n- ECTS transcript\n- Certificate of completion\n\nPayment Plans:\n- Full payment: 5% discount\n- Two installments: Available\n- Three installments: Available (with 3% admin fee)\n\nScholarships:\nLimited scholarships available based on merit and need.\n\nFor detailed fee structure and payment options, please visit the university website or contact the international office.`);
+        }
+        
+        // Initialize with some random available seats
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update seat availability randomly
+            document.querySelectorAll('.course-card').forEach(card => {
+                const totalSeats = parseInt(card.getAttribute('data-seats'));
+                const availableSeats = Math.floor(Math.random() * totalSeats) + 1;
+                const seatElement = card.querySelector('.detail-value:nth-child(2)');
+                if (seatElement) {
+                    seatElement.textContent = `${availableSeats} of ${totalSeats} Seats Available`;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

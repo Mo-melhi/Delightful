@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Winter School Program Fees - Delightful Istanbul. 50-hour course with accommodation, tours, and ECTS credits.">
+    <title>Summer School Program Fees - Delightful Istanbul</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./Fees-su.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Navigation -->
+    <header class="navbar" id="navbar">
+        <div class="logo">
+            <div class="logo-container">
+                <a href="../../index.html" class="unique">
+                    <img src="logo.png" alt="Istanbul Aydin University"
+                        class="logo-university">
+                </a>
+            </div>
+        </div>
+        <nav>
+            <ul>
+
+                <!-- WINTER -->
+                    <li class="dropdown">
+                        <a href="../../winter/winter.html">WINTER</a>
+                        <div class="dropdown-menu">
+                            <a href="../../winter/winter.html">Details of the program</a>
+                            <a href="../../Courses/c_winter.html">Courses</a>
+                            <a href="../../Accomodations/winter_acc/Accomodations.html">Accommodations</a>
+                            <a href="../../Social-Acc/Social-w/WinterAcc.html">Social activity program</a>
+                            <a href="../../Fees/Fees-w/Fees.html">Fees</a>
+                            <a href="../../Application/Winter/Winterapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SPRING -->
+                    <li class="dropdown">
+                        <a href="../../spring/spring.html">SPRING</a>
+                        <div class="dropdown-menu">
+                            <a href="../../spring/spring.html">Details of the program</a>
+                            <a href="../../Courses/c_spring.html">Courses</a>
+                            <a href="../../Accomodations/spring_acc/Accomodations.html">Accommodations</a>
+                            <a href="../../Social-Acc/Social-sp/SpringAcc.html">Social activity program</a>
+                            <a href="../../Fees/Fees-sp/Fees-sp.html">Fees</a>
+                            <a href="../../Application/Spring/Springapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- SUMMER -->
+                    <li class="dropdown">
+                        <a href="../../summer/summer.html">SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../../summer/summer.html">Details of the program</a>
+                            <a href="../../Courses/c_summer.html">Courses</a>
+                            <a href="../../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                    <!-- LATE SUMMER -->
+                    <li class="dropdown">
+                        <a href="../../summer/summer.html">LATE SUMMER</a>
+                        <div class="dropdown-menu">
+                            <a href="../../summer/summer.html">Details of the program</a>
+                            <a href="../../Courses/c_summer.html">Courses</a>
+                            <a href="../../Accomodations/summer_acc/Accomodations.html">Accommodations</a>
+                            <a href="../../Social-Acc/Social-su/SummerAcc.html">Social activity program</a>
+                            <a href="../../Fees/Fees-su/Fees-su.html">Fees</a>
+                            <a href="../../Application/Summer/Summerapp.html">Apply Now!</a>
+                        </div>
+                    </li>
+
+                <!-- No dropdown items -->
+                <li><a href="#PRACTICAL">PRACTICAL INFORMATION</a></li>
+                <li><a href="#CONTACT">CONTACT US</a></li>
+
+            </ul>
+        </nav>
+
+        <div class="social-icons">
+            <a href="" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
+            </a>
+            <a href="" target="_blank" class="social-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content reveal">
+                <h1 class="hero-title">
+                    Program <span class="gradient-text">Fees</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Experience an unforgettable educational journey in Istanbul.
+                </p>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Card Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="pricing-card reveal">
+
+                <div class="pricing-header">
+                    <h2>Early-bird Enrollment</h2>
+                    <div class="price-container">
+                        <span class="currency">€</span>
+                        <span class="price">950</span>
+                    </div>
+                    <p class="price-note">
+                        <i class="far fa-calendar-alt"></i>
+                        Valid until March 27th, 2026
+                    </p>
+                </div>
+
+                <a href="#contact" class="btn-primary btn-large">
+                    Enroll Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="pricing-card reveal" style="margin-top: 20px;">
+
+                <div class="pricing-header">
+                    <h2>Regular Enrollment</h2>
+                    <div class="price-container">
+                        <span class="currency">€</span>
+                        <span class="price">1,100</span>
+                    </div>
+                    <p class="price-note">
+                        <i class="far fa-calendar-alt"></i>
+                        Valid until June 25th, 2026
+                    </p>
+                </div>
+
+                <a href="#contact" class="btn-primary btn-large">
+                    Enroll Now
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- What's Included Section -->
+    <section id="included" class="included-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What's <span class="gradient-text">Included</span></h2>
+                <p>Everything you need for an amazing learning experience</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>50-Hour Course</h3>
+                    <p>Comprehensive online component with ECTS Credits for your academic advancement</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Course Materials</h3>
+                    <p>All necessary learning materials and resources provided throughout the program</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-hotel"></i>
+                    </div>
+                    <h3>14 Nights Accommodation</h3>
+                    <p><strong>14 Nights</strong> accommodation on Bed-and-Breakfast Basis</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-shuttle-van"></i>
+                    </div>
+                    <h3>Airport Transfers</h3>
+                    <p>Convenient transfers within the mentioned time range for hassle-free travel</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Sightseeing Tours</h3>
+                    <p>2 full-day tours: Bosphorus Boat Tour & Historical Peninsula exploration</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-landmark"></i>
+                    </div>
+                    <h3>Museum Entrances</h3>
+                    <p>Free access to museums and cultural sites throughout your journey</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3>Official Certificates</h3>
+                    <p>Certificate of Participation and Transcript of Records upon completion</p>
+                </div>
+
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <h3>Program Amenities</h3>
+                    <p>Exclusive Delightful bag, hoodie, and notebook to enhance your experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's NOT Included Section -->
+    <section id="not-included" class="not-included-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>What's <span class="gradient-text-red">NOT Included</span></h2>
+                <p>Additional expenses to consider for your trip</p>
+            </div>
+
+            <div class="exclusions-grid">
+                <div class="exclusion-card reveal">
+                    <div class="exclusion-icon">
+                        <i class="fas fa-plane"></i>
+                    </div>
+                    <h3>Airfares</h3>
+                    <p>International and domestic flight tickets to/from Istanbul</p>
+                </div>
+
+                <div class="exclusion-card reveal">
+                    <div class="exclusion-icon">
+                        <i class="fas fa-route"></i>
+                    </div>
+                    <h3>Optional Tours</h3>
+                    <p>Additional sightseeing tours beyond the included ones <a href="#" class="step-link"
+                            target="_blank">(check Social Activity Program)</a></p>
+                </div>
+
+                <div class="exclusion-card reveal">
+                    <div class="exclusion-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Travel Insurance</h3>
+                    <p>Personal travel and health insurance coverage</p>
+                </div>
+
+                <div class="exclusion-card reveal">
+                    <div class="exclusion-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Off-Schedule Transfers</h3>
+                    <p>Airport transfers outside the mentioned time range</p>
+                </div>
+
+                <div class="exclusion-card reveal">
+                    <div class="exclusion-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Meals in Istanbul</h3>
+                    <p>Lunches and dinners during the Istanbul portion of the program</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Refund Policy Section -->
+    <section id="policy" class="policy-section">
+        <div class="container">
+            <div class="policy-card reveal policy-layout">
+
+    <!-- FULL-WIDTH HEADER -->
+    <div class="policy-header full-width">
+        <div class="policy-title">
+            <i class="fas fa-file-contract"></i>
+            <h3>Refund Policy</h3>
+        </div>
+    </div>
+
+    <!-- LEFT CONTENT -->
+    <div class="policy-text">
+        <div class="policy-content">
+            <p>Please review our refund policy carefully before enrollment:</p>
+            <ul class="policy-list">
+                <li><i class="fas fa-check-circle"></i> Full refund available up to 60 days before program start</li>
+                <li><i class="fas fa-check-circle"></i> 50% refund available 30–59 days before program start</li>
+                <li><i class="fas fa-times-circle"></i> No refund available less than 30 days before program start</li>
+                <li><i class="fas fa-info-circle"></i> Refunds processed within 14 business days</li>
+            </ul>
+            <p class="policy-note">For special circumstances, <a href="#" style="color: #ebbc00;">contact our support team.</a></p>
+        </div>
+    </div>
+
+    <!-- RIGHT IMAGE -->
+    <div class="policy-illustration">
+        <img src="refund-02.png" alt="Refund policy announcement">
+    </div>
+
+</div>
+
+        </div>
+    </section>
+
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="courses">
+        <div class="container">
+            <div class="cta-content">
+                <h2 style="color: white;">Explore Our Social Activities</h2>
+                <p>Discover the tours and cultural experiences you can have during your stay!</p>
+                <div class="cta-buttons">
+                    <a href="app/Social-Acc/WinterAcc.html" class="btnCTA btn-primaryCTA btn-largeCTA">Check Social
+                        Activities</a>
+                    <a href="https://delightfulapp.aydin.edu.tr/?AppType=Winter"
+                        class="btnCTA btn-secondaryCTA btn-largeCTA" target="_blank">Apply Here</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Get in Touch</h2>
+                <div class="title-underline"></div>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Have Questions?</h3>
+                    <p>Feel free to reach out to us through our social media channels or contact page.</p>
+                    <div class="social-links">
+
+                        <a href="https://instagram.com/delightful.istanbul?igshid=MzMyNGUyNmU2YQ==" target="_blank"
+                            class="social-link instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                        <a href="https://www.facebook.com/delightful.istanbul?mibextid=ZbWKwL" target="_blank"
+                            class="social-link facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                            </svg>
+                        </a>
+                    </div>
+                    <a href="https://delightful.istanbul/contact-us/" class="btn btn-primary" target="_blank">Contact
+                        Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" aria-label="Scroll to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+    <script src="./Fees-su.js"></script>
+</body>
+
+</html>

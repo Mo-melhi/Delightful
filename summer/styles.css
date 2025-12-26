@@ -1,0 +1,960 @@
+:root {
+    --primary-color: #ebbc00;
+    --primary-dark: #b47800;
+    --primary-light: #f7ed6e;
+    --black: #000000;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 15px 40px rgba(235, 188, 0, 0.6);
+}
+
+/* ===== Reset & Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: var(--font-primary);
+    line-height: 1.6;
+    color: var(--gray-900);
+    background-color: var(--white);
+    overflow-x: hidden;
+}
+
+/* ===== Navigation ===== */
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 60px;
+    background: white;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.navbar .logo-university,
+.navbar .logo-program {
+    height: 75px;
+    width: auto;
+    object-fit: contain;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+    position: relative;
+}
+
+.navbar a::after {
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #ebbc00;
+    left: 0;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.navbar a:hover::after {
+    width: 100%;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.mobile-menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: var(--black);
+    border-radius: 3px;
+    transition: all var(--transition-speed);
+}
+
+/* ============================================
+   DROPDOWN BASE
+   ============================================ */
+.dropdown {
+    position: relative;
+}
+
+/* Dropdown container */
+.dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    background: white;
+    padding: 10px 0;
+    border-radius: 6px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    white-space: nowrap;
+    z-index: 2000;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    /* HIDDEN BY DEFAULT, BUT WITH TRANSITIONS */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    /* when hiding: wait 1s before visibility changes */
+    transition:
+        opacity 0.25s ease 0.3s,
+        visibility 0s linear 0.3s;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    /* when showing: no delay */
+    transition:
+        opacity 0.25s ease,
+        visibility 0s linear 0s;
+}
+
+/* Dropdown links */
+.dropdown-menu a {
+    font-size: 0.85rem;
+    color: #111;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 6px 15px;
+    position: relative;
+}
+
+/* hover underline */
+.dropdown-menu a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #ebbc00;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+}
+
+.dropdown-menu a:hover::after {
+    width: 100%;
+}
+
+
+.experiences {
+    position: relative;
+    padding-top: 160px !important;
+}
+
+
+
+.experiences .section-label {
+    font-size: 3rem;       /* bigger h3 */
+    font-weight: 900;
+}
+
+.experiences h2 {
+    font-size: 3.5rem;     /* bigger title */
+    font-weight: 800;
+}
+
+.experiences .section-desc {
+    font-size: 1.4rem;     /* bigger description */
+    line-height: 1.8;
+    max-width: 900px;
+    margin: 0 auto 3rem auto;
+}
+
+/* ------------------------------ */
+
+
+/* Hero Section */
+
+
+/* ------------------------------ */
+
+.hero {
+    position: relative;
+    background: url('images/skyline.jpg') no-repeat center/cover;
+    height: 80vh;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 23rem;
+    /* Increase this value to move down */
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 1rem;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    font-weight: 800;
+    margin: 1rem 0;
+}
+
+.hero h2 span {
+    color: #ebbc00;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.btn-secondary,
+.btn-dark {
+    width: 180px; 
+    text-align: center;
+    padding: 0.8rem 0;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 0 10px;
+    display: inline-block;
+    font-size: 1rem;
+    font-family: inherit;
+    line-height: 1;       
+}
+
+.btn-secondary {
+    background: linear-gradient(45deg, #b47800, #ebbc00);
+    color: white;
+}
+
+.btn-secondary:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+}
+
+.btn-dark {
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+.btn-dark:hover {
+    background: rgba(0, 0, 0, 0.9);
+    transform: scale(1.05);
+}
+
+@keyframes snowFall {
+    0% {
+        transform: translate3d(0, -10px, 0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate3d(var(--offset-x, 0px), 110vh, 0);
+        opacity: 0;
+    }
+}
+
+/* Snow container */
+.snow-layer {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 0;                     /* snow stays behind your circles/cards */
+}
+
+/* A single snowflake */
+.snowflake {
+    position: absolute;
+    top: -10px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: rgba(180, 220, 255, 1);;
+    filter: blur(1px);
+    opacity: 0.7;
+    animation-name: snowFall;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Slight variation for some flakes */
+.snowflake--small {
+    width: 2px;
+    height: 2px;
+    opacity: 0.5;
+}
+
+.snowflake--big {
+    width: 6px;
+    height: 6px;
+    opacity: 0.9;
+    filter: blur(2px);
+}
+
+/* ------------------------------ */
+
+
+/* Sections */
+
+
+/* ------------------------------ */
+
+section {
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+}
+
+.section-label {
+    color: #ebbc00;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.section-desc {
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+
+/* ------------------------------ */
+
+
+/* Hero Slider */
+
+
+/* ------------------------------ */
+
+.hero-slider {
+  position: relative;
+  height: 71vh;
+  overflow: hidden;
+}
+
+.slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-size: cover;       /* fill entire area */
+  background-position: center;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* dark overlay */
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-buttons {
+  margin-bottom: 10px;
+}
+
+.btn-dark {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-dark:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Remove all carousel controls and dots */
+.slider-controls,
+.slider-dots {
+  display: none;
+}
+
+
+
+/* ------------------------------ */
+
+
+/* Cards */
+
+
+/* ------------------------------ */
+
+/* --- Slider layout --- */
+.card-slider {
+  position: relative;
+  margin-top: 2rem;
+}
+
+/* The visible mask */
+.card-slider-window {
+  overflow: hidden;
+
+  /* fade size (adjust this) */
+  --fade: 90px;
+
+  /* Standard */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--fade),
+    #000 calc(100% - var(--fade)),
+    transparent 100%);
+}
+
+/* Track that slides left/right */
+.card-container {
+  display: flex;
+  gap: 1.5rem;
+  width: max-content;
+ --speed: 40s; /* default speed */
+  animation: slideRight var(--speed) linear infinite;
+  will-change: transform;
+}
+
+
+@keyframes slideRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Each card takes 1/5 of the width (20%) */
+.card {
+  flex: 0 0 260px;          /* fixed card width (same as your image width) */
+  height: 160px;            /* pick any height you like */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        /* fills card without distortion */
+  display: block;
+}
+
+/* Hover effects */
+.card:hover {
+  box-shadow: 0 5px 15px rgba(235, 188, 0, 0.7);
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
+}
+
+
+/* Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 5;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.slider-arrow--left {
+  left: -12px;
+}
+
+.slider-arrow--right {
+  right: -12px;
+}
+
+.slider-arrow:hover {
+  background: rgba(0, 0, 0, 0.85);
+  transform: translateY(-50%) scale(1.05);
+}
+
+/* Button under the slider stays the same */
+.apply-btn-container {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+.apply-btn {
+  display: inline-block;
+  background-color: #ebbc00;
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 40px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #b47800;
+  transform: translateY(-3px);
+}
+
+/* --- Progress Bar Under Slider --- */
+.slider-progress {
+  width: 80%;
+  height: 6px;
+  background: #fff3b3;
+  margin: 18px auto 0 auto;
+  border-radius: 10px;
+  position: relative;   /* parent is relative */
+}
+
+.slider-progress-thumb {
+  position: absolute;   /* <-- add this */
+  left: 0;              /* <-- base position */
+  top: 0;               /* optional but nice */
+  width: 20%; /* Will update dynamically */
+  height: 100%;
+  background: #ebbc00;
+  border-radius: inherit;
+  cursor: grab;
+  transition: background 0.3s ease;
+}
+
+.slider-progress-thumb:active {
+  cursor: grabbing;
+  background: #b47800;
+}
+
+
+/* Optional: make it more responsive on small screens (fewer visible cards) */
+@media (max-width: 992px) {
+  .card {
+    flex: 0 0 calc(33.33% - 1.0rem); /* 3 cards visible */
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    flex: 0 0 calc(50% - 0.8rem); /* 2 cards visible */
+  }
+}
+
+
+
+/* ------------------------------ */
+
+
+/* Why Istanbul */
+
+
+/* ------------------------------ */
+
+.features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.feature {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.feature:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* ------------------------------ */
+/* Gallery + Testimonials Section */
+/* ------------------------------ */
+/* Centered layout */
+.simple-cards {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.big-card {
+  flex: 1 1 300px;
+  max-width: 360px;
+  background: linear-gradient(135deg, #fff, #f9f9f9);
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  text-align: center;
+  transition: all 0.4s ease;
+}
+
+.big-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(235, 188, 0, 0.7);
+}
+
+.big-card h3 {
+  font-size: 1.5rem;
+  color: #ebbc00;
+  margin-bottom: 1rem;
+}
+
+.big-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+/* Button style */
+.btn-main {
+  display: inline-block;
+  background-color: #ebbc00;
+  color: #fff;
+  padding: 12px 35px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-main:hover {
+  background-color: #b47800;
+  transform: translateY(-3px);
+}
+
+
+
+
+/* ------------------------------ */
+
+
+/* Footer */
+
+
+/* ------------------------------ */
+
+
+.site-footer {
+  background: #0c1220;
+  color: #ccc;
+  padding: 4rem 0 2rem;
+  font-family: 'Inter', sans-serif;
+}
+.site-footer h4 {
+  color: #fff;
+  margin-bottom: 1rem;
+}
+.site-footer a {
+  color: #ccc;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: #ebbc00;
+}
+.site-footer .footer-top {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+.site-footer .footer-top .footer-col {
+  margin-bottom: 2rem;
+}
+.site-footer .footer-top .links ul {
+  list-style: none;
+  padding-left: 0;
+}
+.site-footer .footer-top .links ul li {
+  margin: 0.5rem 0;
+}
+.site-footer .footer-top .socials a {
+  margin-right: 1rem;
+  font-size: 1.4rem;
+  display: inline-block;
+}
+.site-footer .footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  border-top: 1px solid #333;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+@media (max-width: 768px) {
+  .site-footer .footer-top .row {
+    display: block;
+  }
+  .site-footer .footer-top .footer-col {
+    width: 100%;
+  }
+}
+
+.boldText {
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+/* --- Footer socials (scoped, won't clash with navbar .social-icon) --- */
+.footer-socials{
+  display:flex;
+  gap:16px;
+  justify-content:flex-start;
+  align-items:center;
+}
+
+.footer-social{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.1);
+  color:#fff;
+  text-decoration:none;
+
+  /* perfect centering */
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  /* reset any inherited quirks */
+  padding:0;
+  line-height:1;
+  box-sizing:border-box;
+  position:relative;
+  transition:transform .3s ease, box-shadow .3s ease, background .3s ease;
+}
+
+/* the icon glyph */
+.footer-social i{
+  display:block;
+  font-size:1.25rem;
+  line-height:1;
+  vertical-align:middle; /* fights the bi default baseline shift */
+}
+
+/* hover animations */
+.footer-facebook:hover{
+  background:#000;
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 6px 18px rgba(24,119,242,.35);
+}
+.footer-instagram:hover{
+  background:#000;
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 6px 18px rgba(238,42,123,.35);
+}
+
+.footer-social,
+.footer-social:hover,
+.footer-social:focus {
+  color: #fff;
+}
+
+
+
+
+
+/* ------------------------------ */
+
+
+/* Responsive Design */
+
+
+/* ------------------------------ */
+
+@media (max-width: 1024px) {
+    .navbar {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        display: none;
+    }
+    .hero h2 {
+        font-size: 2rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .btn-primary,
+    .btn-secondary,
+    .btn-dark {
+        padding: 0.6rem 1rem;
+    }
+    section {
+        padding: 3rem 1.5rem;
+    }
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 70vh;
+    }
+    .hero h2 {
+        font-size: 1.8rem;
+    }
+    .card-container,
+    .features,
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Video Modal Styles */
+
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+}
+
+.video-wrap {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.video-wrap video {
+    max-width: 100%;
+    max-height: 80vh;
+    border-radius: 8px;
+}
+
+.close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.tagline {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
