@@ -501,84 +501,6 @@ body {
     }
 }
 
-
-/* =========================
-       FOOTER STYLES - ADDED/UPDATED
-    ========================= */
-
-.footer {
-    background: var(--purple);
-    color: var(--white);
-    padding: 60px 0 30px;
-    margin-top: auto;
-    /* This pushes footer to bottom */
-    width: 100%;
-}
-
-.footer .container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 20px;
-    background-color: transparent;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 50px;
-    margin-bottom: 50px;
-}
-
-.footer-section h3 {
-    color: var(--white);
-    margin-bottom: 25px;
-    font-size: 1.4rem;
-    font-weight: 700;
-}
-
-.footer-section p {
-    color: rgba(255, 255, 255, 0.85);
-    margin-bottom: 15px;
-    line-height: 1.7;
-}
-
-.footer-section a {
-    color: rgba(255, 255, 255, 0.85);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 12px;
-    transition: color 0.3s ease;
-}
-
-.footer-section a:hover {
-    color: var(--orange);
-}
-
-.footer-section i {
-    width: 20px;
-    text-align: center;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 0.95rem;
-    line-height: 1.6;
-}
-
-.footer-bottom p {
-    margin-bottom: 10px;
-}
-
-.footer-bottom p:last-child {
-    margin-bottom: 0;
-}
-
-
 /* =========================
        MODAL
     ========================= */
@@ -727,4 +649,145 @@ body {
     .modal-body {
         padding: 25px;
     }
+}
+.site-footer {
+  background: #0c1220 !important;
+  color: #d7ddff !important;
+  padding: 0;
+}
+
+/* make sure footer container doesn't stretch weirdly */
+.site-footer .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 20px !important;
+  padding-right: 20px !important;
+  background-color: #0c1220;
+}
+
+/* TOP SECTION */
+.site-footer .footer-top {
+  padding: 56px 0 34px !important;
+}
+
+/* Kill any "row" flex overrides and use grid for clean columns */
+.site-footer .footer-top .row {
+  display: grid !important;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 34px !important;
+  align-items: start !important;
+  margin: 0 !important;
+}
+
+/* neutralize bootstrap column sizing/margins that might be broken */
+.site-footer .footer-col {
+  margin: 0 !important;
+  padding: 0 !important;
+  min-width: 0;
+}
+
+/* HEADINGS */
+.site-footer h4 {
+  margin: 0 0 14px !important;
+  color: #ffffff !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.2px;
+}
+
+/* ABOUT TEXT */
+.site-footer .about p {
+  margin: 0 !important;
+  color: rgba(215, 221, 255, 0.82) !important;
+  font-size: 14px !important;
+  line-height: 1.75 !important;
+  max-width: 42ch;
+}
+
+/* LINKS */
+.site-footer .links ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.site-footer .links li {
+  margin: 0 0 10px !important;
+}
+
+.site-footer .links a {
+  color: rgba(215, 221, 255, 0.88) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  display: inline-flex;
+  gap: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.site-footer .links a:hover {
+  color: #aeb8ff !important;
+  transform: translateX(4px);
+}
+
+/* CONTACT */
+.site-footer .contact p {
+  margin: 0 0 10px !important;
+  font-size: 14px !important;
+  color: rgba(215, 221, 255, 0.88) !important;
+}
+
+/* SOCIALS */
+.site-footer .footer-socials {
+  display: flex !important;
+  gap: 12px !important;
+  margin-top: 14px !important;
+}
+
+.site-footer .footer-social {
+  width: 42px !important;
+  height: 42px !important;
+  border-radius: 14px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  background: rgba(255, 255, 255, 0.07) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+
+  text-decoration: none !important;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.site-footer .footer-social i {
+  color: #ffffff !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  opacity: 0.95;
+}
+
+.site-footer .footer-social:hover {
+  transform: translateY(-3px);
+  background: rgba(174, 184, 255, 0.16) !important;
+  border-color: rgba(174, 184, 255, 0.28) !important;
+}
+
+/* BOTTOM SECTION */
+.site-footer .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.10) !important;
+  padding: 18px 0 22px !important;
+  text-align: center !important;
+}
+
+.site-footer .footer-bottom p {
+  margin: 6px 0 !important;
+  font-size: 13px !important;
+  color: rgba(215, 221, 255, 0.70) !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .site-footer .footer-top .row {
+    grid-template-columns: 1fr !important;
+    gap: 22px !important;
+  }
 }
