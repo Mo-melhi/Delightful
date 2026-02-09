@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Courgette&family=Noto+Serif+Vithkuqi:wght@500&family=Quicksand:wght@300&family=Satisfy&family=Shadows+Into+Light&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Chonburi&display=swap");
+
 /* ===== CSS Variables ===== */
 :root {
     --primary-color: #013b7c;
@@ -1647,4 +1652,192 @@ section {
     grid-template-columns: 1fr !important;
     gap: 22px !important;
   }
+}
+
+/* ===== Delightful: Coverflow Books (isolated) ===== */
+.dlxBooks{
+  width: min(1100px, 92%);
+  margin: 0 auto;
+  padding: 70px 0 40px;
+  text-align: center;
+}
+
+.dlxBooks__title{
+  margin: 0 0 10px;
+  font-size: 34px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: #0c1220;
+}
+
+.dlxBooks__subtitle{
+  margin: 0 auto 28px;
+  max-width: 720px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: rgba(12,18,32,0.72);
+}
+
+.dlxBooks__wrap{ position: relative; }
+
+.dlxBooks__swiper{
+  width: 100%;
+  padding: 74px 0 70px;
+  position: relative;
+}
+
+/* Horizontal slide size */
+.dlxBooks__swiper .swiper-slide{
+  height: 260px;
+  width: 480px; /* adjust if needed */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Make swiper decide width by this */
+.dlxBooks__card{
+  width: min(680px, 86vw); /* horizontal card width */
+  height: 440px;          /* horizontal height */
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.18);
+  color: #fff;
+}
+
+/* Card gradients (temporary, you said colors later) */
+.dlxBooks__card--one{
+  background: linear-gradient(135deg, #af01f9, #470364);
+  
+}
+.dlxBooks__card--two{
+  background: linear-gradient(135deg, #ff4e00 ,#5d120a);
+}
+.dlxBooks__card--three{
+  background: linear-gradient(135deg,  #ebbc00, #027041);
+}
+
+/* Content centered like reference, but fits horizontal */
+.dlxBooks__content{
+  position: absolute;
+  inset: 0;
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
+}
+
+.dlxBooks__h3{
+
+padding-bottom: 80px;
+
+  font-size: 56px;
+
+  font-family: "Courgette", cursive;
+}
+
+.dlxBooks__text{
+  margin: 0;
+  font-size: 22px;
+
+  opacity: 0.95;
+  max-width: 60ch;
+}
+
+/* Author row: shown only on active slide */
+.dlxBooks__author{
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 14px;
+  display: none;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.22);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.dlxBooks__avatar{
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255,255,255,0.9);
+}
+
+.dlxBooks__meta{ text-align: left; }
+
+.dlxBooks__name{
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+/* Buttons (isolated, no swiper default selectors) */
+.dlxBooks__btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  display: none; /* shown on desktop */
+  place-items: center;
+  font-size: 26px;
+  line-height: 1;
+  color: #0c1220;
+  background: rgba(255,255,255,0.95);
+  box-shadow: 0 12px 26px rgba(0,0,0,0.15);
+  transition: transform 0.15s ease, background 0.15s ease;
+  z-index: 10;
+}
+
+.dlxBooks__btn:hover{
+  transform: translateY(-50%) scale(1.06);
+  background: #fff;
+}
+
+.dlxBooks__btn--prev{ left: -18px; }
+.dlxBooks__btn--next{ right: -18px; }
+
+@media (min-width: 760px){
+  .dlxBooks__btn{ display: grid; }
+}
+
+/* Mobile tweaks */
+@media (max-width: 600px){
+  .dlxBooks__h3{ font-size: 21px; }
+  .dlxBooks__card{ height: 230px; }
+}
+
+/* IMPORTANT: allow peeking slides on BOTH sides */
+.dlxBooks__wrap,
+.dlxBooks__swiper,
+.dlxBooks__swiper .swiper-wrapper {
+  overflow: visible !important;
+}
+
+.dlxBooks__btn {
+  z-index: 9999 !important;
+  pointer-events: auto !important;
+}
+
+.dlxBooks__swiper {
+  position: relative;
+}
+
+
+.swiper-slide a{
+    color: var(--gray-300);
+    font-weight: 600;
+    display: inline-block;
 }

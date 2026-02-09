@@ -299,3 +299,36 @@ console.log('Delightful Istanbul website loaded successfully! 🌟');
 
   io.observe(section);
 })();
+
+const dlxBooksSwiper = new Swiper(".dlxBooks__swiper", {
+  effect: "coverflow",
+  grabCursor: true,
+  centeredSlides: true,
+  slidesPerView: "auto",
+  loop: true,
+
+  coverflowEffect: {
+    rotate: 0,
+    stretch: 120,       // pushes side cards outward (works great for horizontal)
+    depth: 300,         // makes side cards go back
+    modifier: 2.6,
+    slideShadows: false
+  },
+
+  navigation: {
+    nextEl: ".dlxBooks__btn--next",
+    prevEl: ".dlxBooks__btn--prev"
+  },
+  breakpoints: {
+    560: {
+      slidesPerView: 1
+    },
+    768: {
+      slidesPerView: 4
+    },
+    1024: {
+      slidesPerView: 1
+    }
+  },
+ 
+});
