@@ -137,72 +137,76 @@ body {
    DROPDOWN BASE
    ============================================ */
 .dropdown {
-    position: relative;
+  position: relative;
 }
 
 /* Dropdown container */
 .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 0;
-    background: white;
-    padding: 10px 0;
-    border-radius: 6px;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-    white-space: nowrap;
-    z-index: 2000;
+  position: absolute;
+  top: 100%;              /* ✅ remove the 5px gap */
+  left: 0;
+  margin-top: 5px;        /* ✅ visual spacing WITHOUT breaking hover */
+  background: white;
+  padding: 10px 0;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
+  z-index: 2000;
 
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 
-    /* HIDDEN BY DEFAULT, BUT WITH TRANSITIONS */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 
-    /* when hiding: wait 1s before visibility changes */
-    transition:
-        opacity 0.25s ease 0.3s,
-        visibility 0s linear 0.3s;
+  /* ✅ smooth, but no delay */
+  transition: opacity 0.18s ease, visibility 0s linear 0.18s;
 }
 
 /* Show dropdown on hover */
-.dropdown:hover .dropdown-menu {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-
-    /* when showing: no delay */
-    transition:
-        opacity 0.25s ease,
-        visibility 0s linear 0s;
+.dropdown:hover .dropdown-menu,
+.dropdown:focus-within .dropdown-menu { /* ✅ also works for keyboard/click */
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 0.18s ease, visibility 0s linear 0s;
 }
 
 /* Dropdown links */
 .dropdown-menu a {
-    font-size: 0.85rem;
-    color: #111;
-    text-decoration: none;
-    font-weight: 500;
-    padding: 6px 15px;
-    position: relative;
+  font-size: 0.85rem;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 15px;
+  position: relative;
 }
 
 /* hover underline */
 .dropdown-menu a::after {
-    content: "";
-    width: 0%;
-    height: 2px;
-    background: #662483;
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    transition: 0.3s;
+  content: "";
+  width: 0%;
+  height: 2px;
+  background: #662483;
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  transition: 0.3s;
 }
 
 .dropdown-menu a:hover::after {
-    width: 100%;
+  width: 100%;
+}
+
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -8px;      /* bridge area above the menu */
+  height: 8px;
 }
 
 /* ===== New Hero Section ===== */
