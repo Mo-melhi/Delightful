@@ -1,4 +1,23 @@
 /* Reset and Base Styles */
+:root {
+    --primary-color: #107f7f;
+    --primary-dark: #2d6160;
+    --primary-light: #5ac1c0;
+    --black: #000000;
+    --white: #ffffff;
+    --gray-100: #f8f9fa;
+    --gray-200: #e9ecef;
+    --gray-300: #dee2e6;
+    --gray-700: #495057;
+    --gray-900: #212529;
+    
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --box-shadow-hover: 0 15px 40px rgba(22, 209, 206, 0.6);
+}
+
 
 * {
     margin: 0;
@@ -1247,4 +1266,124 @@ body {
     grid-template-columns: 1fr !important;
     gap: 22px !important;
   }
+}
+
+.cbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.cbtn-primary {
+    background: #540085;
+    color: var(--white);
+    border-color: #540085;
+}
+
+.cbtn-primary:hover {
+    background: #3a005c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(145, 8, 204,0.6);
+}
+
+.cbtn-hero {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+}
+
+.cbtn-text {
+    background: transparent;
+    color: var(--black);
+    border: none;
+    padding: 18px 20px;
+}
+
+.cbtn-text:hover {
+    color: #540085;
+    gap: 15px;
+}
+
+.cbtn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.cbtn-secondary:hover {
+    background: var(--white);
+    color: #540085;
+    transform: translateY(-3px);
+}
+
+.cbtn-large {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+}
+
+/* ===== CTA Section ===== */
+.cta-section {
+    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.c-section {
+    padding: 3.5rem 2.5rem;
+    text-align: center;
 }

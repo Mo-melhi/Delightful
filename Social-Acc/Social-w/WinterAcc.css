@@ -13,6 +13,9 @@
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --box-shadow-hover: 0 15px 40px rgba(145, 8, 204, 0.4);
     --transition: all 0.3s ease;
+    --font-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --transition-speed: 0.3s;
+    --border-radius: 12px;
 }
 
 * {
@@ -677,73 +680,8 @@ body {
 }
 
 
-/* CTA Section */
-.cta-section {
-    padding: 80px 0;
-    background: linear-gradient(135deg, var(--primary-dark), var(--primary-color));
-    color: var(--white);
-    text-align: center;
-}
 
-.cta-section h2 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
 
-.cta-section p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    opacity: 0.9;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-/* Footer */
-footer {
-    background-color: var(--gray-900);
-    color: var(--gray-300);
-    padding: 60px 0 20px;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--gray-700);
-    padding-bottom: 40px;
-}
-
-.footer-info h3 {
-    color: var(--white);
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.footer-social a {
-    color: var(--white);
-    font-size: 1.2rem;
-    margin-left: 20px;
-    transition: var(--transition);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255,255,255,0.1);
-    border-radius: 50%;
-}
-
-.footer-social a:hover {
-    background-color: var(--primary-color);
-    transform: translateY(-3px);
-}
-
-.footer-bottom {
-    text-align: center;
-    font-size: 0.9rem;
-}
 
 /* Animations */
 .fade-in-up {
@@ -998,4 +936,124 @@ footer {
     grid-template-columns: 1fr !important;
     gap: 22px !important;
   }
+}
+
+.cbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 32px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all var(--transition-speed);
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.cbtn-primary {
+    background: #540085;
+    color: var(--white);
+    border-color: #540085;
+}
+
+.cbtn-primary:hover {
+    background: #3a005c;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(145, 8, 204,0.6);
+}
+
+.cbtn-hero {
+    padding: 18px 40px;
+    font-size: 1.1rem;
+}
+
+.cbtn-text {
+    background: transparent;
+    color: var(--black);
+    border: none;
+    padding: 18px 20px;
+}
+
+.cbtn-text:hover {
+    color: #540085;
+    gap: 15px;
+}
+
+.cbtn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.cbtn-secondary:hover {
+    background: var(--white);
+    color: #540085;
+    transform: translateY(-3px);
+}
+
+.cbtn-large {
+    padding: 20px 50px;
+    font-size: 1.2rem;
+}
+
+/* ===== CTA Section ===== */
+.cta-section {
+    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cta-section {
+    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    color: var(--white);
+    text-align: center;
+}
+
+.cta-content h2 {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 1.3rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.c-section {
+    padding: 3.5rem 2.5rem;
+    text-align: center;
 }
