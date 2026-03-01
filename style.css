@@ -149,7 +149,6 @@ button,
   left: 0;
   margin-top: 5px;        /* ✅ visual spacing WITHOUT breaking hover */
   background: white;
-  padding: 10px 0;
   border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   white-space: nowrap;
@@ -211,6 +210,50 @@ button,
   height: 8px;
 }
 
+/* ===============================
+   APPLY NOW FULL WIDTH BUTTON
+   =============================== */
+
+.dropdown-menu .apply-btn{
+  display:block;
+  width:100%;
+  background:#013b7c;
+  color:#fff !important;
+  padding:8px 15px;
+  position:relative;
+}
+
+.dropdown-menu .apply-btn::after{
+  content:'';
+  position:absolute;
+  width:0%;
+  height:2px;
+  background:white;
+  left:0;
+  bottom:2px;
+  transition:0.3s ease;
+}
+
+.dropdown-menu .apply-btn:hover::after{
+  width:100%;
+}
+
+.dropdown-menu .apply-btn:hover{
+  background:#013b7c;
+  color:#fff !important;
+}
+
+/* hover underline */
+.dropdown-menu a::after {
+    content: "";
+    width: 0%;
+    height: 2px;
+    background: #013b7c;
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    transition: 0.3s;
+}
 
 
 /* ------------------------------ */
@@ -594,7 +637,7 @@ section {
 
 .section-label {
     color: #013b7c;
-    font-size: 0.8rem;
+    font-size: 2rem;
     font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -687,13 +730,40 @@ section {
 /* ------------------------------ */
 /* Gallery + Testimonials Section */
 /* ------------------------------ */
+/* ===== Infinite Testimonials Slider ===== */
 
-.gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    margin-top: 2rem;
+.gallery-slider {
+  margin-top: 2rem;
+  overflow: hidden;
+  position: relative;
+  cursor: grab;
 }
+
+.gallery-slider.is-dragging {
+  cursor: grabbing;
+}
+
+/* Moving row */
+.gallery-track {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Keep cards in one horizontal row */
+.gallery-item {
+  flex: 0 0 320px; /* Adjust width if needed */
+}
+
+/* Prevent text selection while dragging */
+.gallery-slider,
+.gallery-slider * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 
 /* CARD CONTAINER */
 
@@ -705,8 +775,8 @@ section {
     /* white card background */
     color: #222;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
-    height: 280px;
+    padding: 2rem;
+    min-height: 280px;
     /* fixed height for all cards */
     display: flex;
     flex-direction: column;
@@ -740,8 +810,8 @@ section {
 .gallery-item .testimonial-info strong {
     display: block;
     font-weight: 600;
-    font-size: 1.3rem;
-    margin-bottom: 40px;
+    font-size: 1.2rem;
+    margin-bottom: 0px;
 }
 
 .gallery-item .student-country,

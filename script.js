@@ -1,5 +1,3 @@
-
-
 const heroSlides = document.querySelectorAll('#heroSlider .hero-slide');
 const heroPrev = document.getElementById('heroPrev');
 const heroNext = document.getElementById('heroNext');
@@ -332,3 +330,122 @@ const dlxBooksSwiper = new Swiper(".dlxBooks__swiper", {
   },
  
 });
+
+(() => {
+  const slider = document.getElementById("testimonialsSlider");
+  const track = slider.querySelector(".gallery-track");
+
+  // ===== Make it infinite by duplicating content =====
+  // Duplicate until the track is at least 2x wider than the slider
+  const originalHTML = track.innerHTML;
+  track.innerHTML = originalHTML; // ensure we start clean
+
+  // Add duplicates so it always has enough content to loop smoothly
+  while (track.scrollWidth < slider.clientWidth * 2) {
+    track.innerHTML += originalHTML;
+  }
+  // Add one more full set for safer looping
+  track.innerHTML += originalHTML;
+
+  // ===== Animation state =====
+  let x = 0;                 // current translateX (negative to move left)
+  let speed = 0.5;           // auto speed (0.3–1.0)
+  let isPaused = false;
+
+  // Drag state
+  let isDown = false;
+  let startX = 0;
+  let startTranslate = 0;
+
+  // We loop when we pass half the content
+  function getLoopWidth() {
+    return track.scrollWidth / 2;
+  }
+
+  function applyTransform() {
+    track.style.transform = `translate3d(${x}px, 0, 0)`;
+  }
+
+  function normalizeX() {
+    const loopW = getLoopWidth();
+    // If moved too far left, wrap forward
+    if (-x >= loopW) x += loopW;
+    // If moved too far right, wrap backward
+    if (x > 0) x -= loopW;
+  }
+
+  // ===== Auto move =====
+  function animate() {
+    if (!isPaused && !isDown) {
+      x -= speed;          // move left
+      normalizeX();
+      applyTransform();
+    }
+    requestAnimationFrame(animate);
+  }
+  requestAnimationFrame(animate);
+
+  // ===== Pause on hover =====
+  slider.addEventListener("mouseenter", () => isPaused = true);
+  slider.addEventListener("mouseleave", () => isPaused = false);
+
+  // ===== Drag to move (no text selection) =====
+  slider.addEventListener("mousedown", (e) => {
+    isDown = true;
+    slider.classList.add("is-dragging");
+    startX = e.clientX;
+    startTranslate = x;
+    isPaused = true;
+    e.preventDefault();
+  });
+
+  window.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    const dx = e.clientX - startX;
+    x = startTranslate + dx;
+    normalizeX();
+    applyTransform();
+  });
+
+  window.addEventListener("mouseup", () => {
+    if (!isDown) return;
+    isDown = false;
+    slider.classList.remove("is-dragging");
+    isPaused = false;
+  });
+
+  // ===== Touch support =====
+  slider.addEventListener("touchstart", (e) => {
+    isDown = true;
+    isPaused = true;
+    startX = e.touches[0].clientX;
+    startTranslate = x;
+  }, { passive: true });
+
+  slider.addEventListener("touchmove", (e) => {
+    if (!isDown) return;
+    const dx = e.touches[0].clientX - startX;
+    x = startTranslate + dx;
+    normalizeX();
+    applyTransform();
+  }, { passive: true });
+
+  slider.addEventListener("touchend", () => {
+    isDown = false;
+    isPaused = false;
+  });
+
+  // ===== Wheel scroll support (scroll down = move right/left) =====
+  slider.addEventListener("wheel", (e) => {
+    // prevent page scroll while interacting
+    e.preventDefault();
+    isPaused = true;
+    x -= e.deltaY; // try: x += e.deltaY if you want opposite direction
+    normalizeX();
+    applyTransform();
+
+    clearTimeout(slider._wheelTimer);
+    slider._wheelTimer = setTimeout(() => { isPaused = false; }, 250);
+  }, { passive: false });
+
+})();
