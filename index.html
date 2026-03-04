@@ -199,6 +199,59 @@
             </div>
         </div>
     </section>
+    <h3 class="section-label" style="margin-left: 630px;">Our Programs</h3>
+    <h2 style="margin-left: 675px;">By the Numbers</h2>
+        <p style="margin-left: 380px;">Discover the reach and influence of our Delightful Istanbul programs across students, universities, and
+            countries.</p>
+<section class=" ncard-slider" >
+  <!-- edge navigation -->
+  <div class="nnav-left"></div>
+  <div class="nnav-right"></div>
+
+  <div class="ncard-track">
+
+    <article class="ncard active">
+      <div class="ncard-image">
+        <img src="https://picsum.photos/900/600?random=1">
+      </div>
+      <div class="ncard-content">
+        
+        <h2 style="color: #013b7c;">Winter School</h2>
+        <p>Discover the latest UI trends shaping modern web experiences.</p>
+        <a href="winter/winter.html" class="ncard-btn">Read More</a>
+      </div>
+    </article>
+
+    <article class="ncard">
+      <div class="ncard-image">
+        <img src="https://picsum.photos/900/600?random=2">
+      </div>
+      <div class="ncard-content">
+       
+        <h2 style="color: #013b7c;">Summer School</h2>
+        <p>Learn strategies to improve website speed and responsiveness.</p>
+        <a href="summer/summer.html" class="ncard-btn">Read More</a>
+      </div>
+    </article>
+
+    <article class="ncard">
+      <div class="ncard-image">
+        <img src="https://picsum.photos/900/600?random=3">
+      </div>
+      <div class="ncard-content">
+       
+        <h2 style="color: #013b7c;">Spring School</h2>
+        <p>The most important UX design concepts modern designers use.</p>
+        <a href="spring/spring.html" class="ncard-btn">Read More</a>
+      </div>
+    </article>
+
+  </div>
+
+  <div class="nslider-pagination"></div>
+
+</section>
+
 <!--
     <section class="dlxBooks">
         <h2 class="dlxBooks__title" style="padding-bottom: 70px;">"Delightful Programs"</h2>
@@ -459,7 +512,65 @@
 
 
 
+    <script>
 
+const cards = document.querySelectorAll(".ncard");
+const pagination = document.querySelector(".nslider-pagination");
+
+let index = 0;
+
+/* create dots */
+
+cards.forEach((_,i)=>{
+  const dot = document.createElement("span");
+
+  if(i===0) dot.classList.add("active");
+
+  dot.addEventListener("click",()=>{
+    goToSlide(i);
+  });
+
+  pagination.appendChild(dot);
+});
+
+const dots = document.querySelectorAll(".nslider-pagination span");
+
+function goToSlide(i){
+
+  cards[index].classList.remove("active");
+  dots[index].classList.remove("active");
+
+  index = i;
+
+  cards[index].classList.add("active");
+  dots[index].classList.add("active");
+
+}
+
+/* autoplay */
+
+setInterval(()=>{
+  let next = (index + 1) % cards.length;
+  goToSlide(next);
+},5000);
+
+const navLeft = document.querySelector(".nnav-left");
+const navRight = document.querySelector(".nnav-right");
+
+function nextSlide(){
+  let next = (index + 1) % cards.length;
+  goToSlide(next);
+}
+
+function prevSlide(){
+  let prev = (index - 1 + cards.length) % cards.length;
+  goToSlide(prev);
+}
+
+navRight.addEventListener("click", nextSlide);
+navLeft.addEventListener("click", prevSlide);
+
+</script>
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap"></script>
     <script src="https://cdn.jsdelivr.net/npm/jsvectormap/dist/maps/world.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
