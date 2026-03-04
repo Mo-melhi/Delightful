@@ -459,7 +459,8 @@ a.quick-card-link:hover {
    Coordinators Section
    ======================================== */
 .coordinators {
-    padding: 100px 0 80px;
+    padding: 40px 0 80px;
+    margin-top: 60px;
 }
 
 .coordinator-cards {
