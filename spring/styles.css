@@ -1162,15 +1162,15 @@ section {
 }
 
 .cbtn-primary {
-    background: #540085;
+    background: #ff8e00;
     color: var(--white);
-    border-color: #540085;
+    border-color: #ff8e00;
 }
 
 .cbtn-primary:hover {
-    background: #3a005c;
+    background: #e77f00;
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(145, 8, 204,0.6);
+    box-shadow: 0 10px 25px #ff8e0066;
 }
 
 .cbtn-hero {
@@ -1186,7 +1186,7 @@ section {
 }
 
 .cbtn-text:hover {
-    color: #540085;
+    color: #ff8e00;
     gap: 15px;
 }
 
@@ -1198,7 +1198,7 @@ section {
 
 .cbtn-secondary:hover {
     background: var(--white);
-    color: #540085;
+    color: #ff8e00;
     transform: translateY(-3px);
 }
 
@@ -1209,7 +1209,7 @@ section {
 
 /* ===== CTA Section ===== */
 .cta-section {
-    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    background: linear-gradient(135deg, var(--black) 0%, #ff8e00 100%);
     color: var(--white);
     text-align: center;
 }
