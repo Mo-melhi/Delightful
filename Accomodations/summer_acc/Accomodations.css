@@ -903,15 +903,15 @@ footer {
 }
 
 .cbtn-primary {
-    background: #540085;
+    background: #ebbc00;
     color: var(--white);
-    border-color: #540085;
+    border-color: #ebbc00;
 }
 
 .cbtn-primary:hover {
-    background: #3a005c;
+    background: #c29b00;
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(145, 8, 204,0.6);
+    box-shadow: 0 10px 25px #ebbc0099;
 }
 
 .cbtn-hero {
@@ -927,7 +927,7 @@ footer {
 }
 
 .cbtn-text:hover {
-    color: #540085;
+    color: #ebbc00;
     gap: 15px;
 }
 
@@ -939,7 +939,7 @@ footer {
 
 .cbtn-secondary:hover {
     background: var(--white);
-    color: #540085;
+    color: #ebbc00;
     transform: translateY(-3px);
 }
 
@@ -950,7 +950,7 @@ footer {
 
 /* ===== CTA Section ===== */
 .cta-section {
-    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    background: linear-gradient(135deg, var(--black) 0%, #ebbc00 100%);
     color: var(--white);
     text-align: center;
 }
@@ -977,7 +977,7 @@ footer {
 }
 
 .cta-section {
-    background: linear-gradient(135deg, var(--black) 0%, #540085 100%);
+    background: linear-gradient(135deg, var(--black) 0%, #ebbc00 100%);
     color: var(--white);
     text-align: center;
 }
